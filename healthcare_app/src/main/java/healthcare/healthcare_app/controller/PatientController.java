@@ -16,22 +16,22 @@ public class PatientController {
 
     @Autowired
     private patientService patientService;
-    @PutMapping ("/savePatients")
+    @PostMapping ("/savePatients")
     public String savePatient(@RequestBody Patient patient) throws ExecutionException, InterruptedException {
         return patientService.savePatient(patient);
     }
 
-    @GetMapping("/getPatients")
-    public List<Patient> echo() {
-        return List.of(
-                new Patient(
-                        "1",
-                        "someone",
-                        "someone@gmail.com",
-                        "July 01, 1990",
-                        "32"
+    @PutMapping ("/savePatients")
+    public String updatePatient(@RequestBody Patient patient) throws ExecutionException, InterruptedException {
+        return patientService.updatePatient(patient);
+    }
 
-                )
-        );
+    @GetMapping("/getPatients")
+    public List<Patient> getPatients() throws ExecutionException, InterruptedException {
+        return patientService.getPatientDetails();
+    }
+    @DeleteMapping("/getPatients")
+    public String deletePatient(@PathVariable String name) throws ExecutionException, InterruptedException {
+        return patientService.deletePatient(name);
     }
 }
