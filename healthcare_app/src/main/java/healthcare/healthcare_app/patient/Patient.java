@@ -1,20 +1,20 @@
 package healthcare.healthcare_app.patient;
 
-import java.time.LocalDate;
+
 
 public class Patient {
-    private Long ID;
+    private String ID;
     private String name;
     private String email;
-    private LocalDate DOB;
-    private Integer age;
+    private String DOB;
+    private String age;
 
     // constructor with no params
     public Patient() {
     }
 
     // constructor with all params
-    public Patient(Long ID, String name, String email, LocalDate DOB, Integer age) {
+    public Patient(String ID, String name, String email, String DOB, String age) {
         this.ID = ID;
         this.name = name;
         this.email = email;
@@ -23,14 +23,14 @@ public class Patient {
     }
 
     // constructor without patient ID param
-    public Patient(String name, String email, LocalDate DOB, Integer age) {
+    public Patient(String name, String email, String DOB, String age) {
         this.name = name;
         this.email = email;
         this.DOB = DOB;
         this.age = age;
     }
 
-    public Long getID() {
+    public String getID() {
         return ID;
     }
 
@@ -42,15 +42,15 @@ public class Patient {
         return email;
     }
 
-    public LocalDate getDOB() {
+    public String getDOB() {
         return DOB;
     }
 
-    public Integer getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setID(Long ID) {
+    public void setID(String ID) {
         this.ID = ID;
     }
 
@@ -62,11 +62,11 @@ public class Patient {
         this.email = email;
     }
 
-    public void setDOB(LocalDate DOB) {
+    public void setDOB(String DOB) {
         this.DOB = DOB;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(String age) {
         this.age = age;
     }
 

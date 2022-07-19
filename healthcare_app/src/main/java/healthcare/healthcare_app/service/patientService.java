@@ -5,18 +5,17 @@ import com.google.cloud.firestore.Firestore;
 import com.google.cloud.firestore.WriteResult;
 import com.google.firebase.cloud.FirestoreClient;
 import healthcare.healthcare_app.patient.Patient;
+import org.springframework.stereotype.Service;
 
 import java.util.concurrent.ExecutionException;
 
+@Service
 public class patientService {
-    public static final String COLLECTION_NAME = "Patient";
-
     public String savePatient(Patient patient) throws ExecutionException, InterruptedException {
-        Firestore dbfirestore = FirestoreClient.getFirestore();
+        Firestore dbFirestore = FirestoreClient.getFirestore();
 
-        ApiFuture<WriteResult> collectionApiFuture = dbfirestore.collection(COLLECTION_NAME).document(patient.getName()).set(patient);
+        ApiFuture<WriteResult> collectionApiFuture = dbFirestore.collection("Patient").document(patient.getName()).set(patient);
 
         return collectionApiFuture.get().getUpdateTime().toString();
     }
-
 }

@@ -5,27 +5,25 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 @Service
-public class FirebaseInitialization {
-    public void initialization(){
+public class firebaseInitialization {
+
+    @PostConstruct
+    public void initialization() throws IOException {
 
         FileInputStream serviceAccount =
-                null;
-        try {
-            serviceAccount = new FileInputStream("./serviceAccountKey.json");
-
+                new FileInputStream("./serviceAccountKey.json");
 
         FirebaseOptions options = FirebaseOptions.builder()
                 .setCredentials(GoogleCredentials.fromStream(serviceAccount))
                 .build();
 
         FirebaseApp.initializeApp(options);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
 
     }
 }
