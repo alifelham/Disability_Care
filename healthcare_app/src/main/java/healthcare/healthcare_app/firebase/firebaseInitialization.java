@@ -16,6 +16,8 @@ public class firebaseInitialization {
     @PostConstruct
     public void initialization() throws IOException {
 
+        try
+        {
         FileInputStream serviceAccount =
                 new FileInputStream("./serviceAccountKey.json");
 
@@ -24,6 +26,10 @@ public class firebaseInitialization {
                 .build();
 
         FirebaseApp.initializeApp(options);
-
     }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
 }

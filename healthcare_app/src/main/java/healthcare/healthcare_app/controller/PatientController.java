@@ -1,12 +1,10 @@
 package healthcare.healthcare_app.controller;
 
-import healthcare.healthcare_app.patient.Patient;
+import healthcare.healthcare_app.entities.Patient;
 import healthcare.healthcare_app.service.patientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
-import java.time.Month;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -21,6 +19,7 @@ public class PatientController {
         return patientService.savePatient(patient);
     }
 
+    //update
     @PutMapping ("/savePatients")
     public String updatePatient(@RequestBody Patient patient) throws ExecutionException, InterruptedException {
         return patientService.updatePatient(patient);
@@ -30,7 +29,7 @@ public class PatientController {
     public List<Patient> getPatients() throws ExecutionException, InterruptedException {
         return patientService.getPatientDetails();
     }
-    @DeleteMapping("/getPatients")
+    @DeleteMapping("/getPatients/{name}")
     public String deletePatient(@PathVariable String name) throws ExecutionException, InterruptedException {
         return patientService.deletePatient(name);
     }

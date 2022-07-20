@@ -1,6 +1,4 @@
-package healthcare.healthcare_app.patient;
-
-
+package healthcare.healthcare_app.entities;
 
 public class Patient {
     private String ID;

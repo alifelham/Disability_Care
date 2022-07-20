@@ -6,7 +6,7 @@ import com.google.cloud.firestore.DocumentSnapshot;
 import com.google.cloud.firestore.Firestore;
 import com.google.cloud.firestore.WriteResult;
 import com.google.firebase.cloud.FirestoreClient;
-import healthcare.healthcare_app.entities.Patient;
+import healthcare.healthcare_app.entities.Pharmacy;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,24 +15,24 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 @Service
-public class patientService {
-    public String savePatient(Patient patient) throws ExecutionException, InterruptedException {
+public class PharmacyService {
+    public String savePharmacy(Pharmacy pharmacy) throws ExecutionException, InterruptedException {
         Firestore dbFirestore = FirestoreClient.getFirestore();
 
-        ApiFuture<WriteResult> collectionApiFuture = dbFirestore.collection("Patient").document(patient.getName()).set(patient);
+        ApiFuture<WriteResult> collectionApiFuture = dbFirestore.collection("Pharmacy").document(pharmacy.getName()).set(pharmacy);
 
         return collectionApiFuture.get().getUpdateTime().toString();
     }
 
-    public List<Patient> getPatientDetails() throws ExecutionException, InterruptedException {
+    public List<Pharmacy> getPharmacyDetails() throws ExecutionException, InterruptedException {
 
         Firestore dbFirestore = FirestoreClient.getFirestore();
 
-        Iterable<DocumentReference>documentReferences = dbFirestore.collection("Patient").listDocuments();
+        Iterable<DocumentReference>documentReferences = dbFirestore.collection("Pharmacy").listDocuments();
         Iterator<DocumentReference>iterator = documentReferences.iterator();
 
-        List<Patient> patientList = new ArrayList<>();
-        Patient patient = null;
+        List<Pharmacy> pharmacyList = new ArrayList<>();
+        Pharmacy pharmacy = null;
 
         while(iterator.hasNext())
         {
@@ -41,26 +41,26 @@ public class patientService {
 
             DocumentSnapshot documentSnapshot = future.get();
 
-            patient = documentSnapshot.toObject(Patient.class);
-            patientList.add(patient);
+            pharmacy = documentSnapshot.toObject(Pharmacy.class);
+            pharmacyList.add(pharmacy);
         }
 
-        return patientList;
+        return pharmacyList;
     }
 
-    public String updatePatient(Patient patient) throws ExecutionException, InterruptedException {
+    public String updatePharmacy(Pharmacy pharmacy) throws ExecutionException, InterruptedException {
         Firestore dbFirestore = FirestoreClient.getFirestore();
 
-        ApiFuture<WriteResult> collectionApiFuture = dbFirestore.collection("Patient").document(patient.getName()).set(patient);
+        ApiFuture<WriteResult> collectionApiFuture = dbFirestore.collection("Pharmacy").document(pharmacy.getName()).set(pharmacy);
 
         return collectionApiFuture.get().getUpdateTime().toString();
     }
 
-    public String deletePatient(String name) throws ExecutionException, InterruptedException {
+    public String deletePharmacy(String name) throws ExecutionException, InterruptedException {
         Firestore dbFirestore = FirestoreClient.getFirestore();
 
-        ApiFuture<WriteResult> collectionApiFuture = dbFirestore.collection("Patient").document(name).delete();
+        ApiFuture<WriteResult> collectionApiFuture = dbFirestore.collection("Pharmacy").document(name).delete();
 
-        return "Patient with name " + name + " has been deleted successfully";
+        return "Pharmacy with name " + name + " has been deleted successfully";
     }
 }
