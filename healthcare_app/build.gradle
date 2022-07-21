@@ -17,6 +17,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
 	//implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.thymeleaf:thymeleaf:3.0.15.RELEASE'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
 	// https://mvnrepository.com/artifact/com.google.firebase/firebase-admin

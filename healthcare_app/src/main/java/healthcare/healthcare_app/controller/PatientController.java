@@ -14,6 +14,8 @@ public class PatientController {
 
     @Autowired
     private patientService patientService;
+
+    //Create
     @PostMapping ("/savePatients")
     public String savePatient(@RequestBody Patient patient) throws ExecutionException, InterruptedException {
         return patientService.savePatient(patient);
