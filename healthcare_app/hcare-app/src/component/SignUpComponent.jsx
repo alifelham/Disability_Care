@@ -1,6 +1,10 @@
 import React from 'react';
 import './signup.css'
 
+
+
+
+
 function SignUp() {
     return (
         <div>
@@ -13,6 +17,10 @@ function SignUp() {
             <script src='https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.11.0/umd/react-dom.production.min.js'></script><script src="./script.js"></script>
 
             <div className="container">
+
+
+
+
                 <div className="form-box">
                     <div className="header-form">
                         <h4 className="text-primary text-center"><i className="fa fa-user-circle" style={{ fontSize: "110px" }}></i></h4>
