@@ -31,6 +31,38 @@ function App() {
   );
 }
 
+function NavItem(props) {
 
+  const [open, setOpen] = useState(false);
+
+  return (
+    <li className='nav-item'>
+      <a href='/signup' className='icon-button' onClick={() => setOpen(!open)}>
+        {props.icon}
+      </a>
+
+      {open && props.children}
+
+    </li>
+  );
+}
+
+function DropdownMenu() {
+
+  function DropdownItem(props) {
+
+    return (
+      <a href='#' className='dropdown-item'>
+        {props.children}
+      </a>
+    );
+  }
+
+  return (
+    <div className='dropdown'>
+
+    </div>
+  );
+}
 
 export default App;
