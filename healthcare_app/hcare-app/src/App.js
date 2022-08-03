@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SignUpComponent from './component/SignUpComponent'
-//import SignUpComponent from './component/SignUpComponent'
 import './App.css';
 import Navbar from './component/Navbar';
 import { ReactComponent as Calendar } from "./icons/calendar-date.svg";
+import { ReactComponent as BellIcon } from "./icons/bell.svg";
+import { ReactComponent as ProfileIcon } from "./icons/person.svg";
+import { ReactComponent as SettingsIcon } from "./icons/gear.svg";
+import { ReactComponent as CaretIcon } from "./icons/caret-down.svg";
 
 function App() {
   return (
@@ -19,8 +22,8 @@ function App() {
             < Navbar>
               <NavItem icon={<Calendar />} />
               <NavItem icon={<Calendar />} />
-              <NavItem icon={<Calendar />}>
-                <p>Hello</p>
+              <NavItem icon={<CaretIcon />}>
+              <DropdownMenu/>
               </NavItem>
             </Navbar>
             <h1>lorem ipsum</h1>
@@ -37,7 +40,7 @@ function NavItem(props) {
 
   return (
     <li className='nav-item'>
-      <a href='/signup' className='icon-button' onClick={() => setOpen(!open)}>
+      <a href='#' className='icon-button' onClick={() => setOpen(!open)}>
         {props.icon}
       </a>
 
@@ -52,15 +55,25 @@ function DropdownMenu() {
   function DropdownItem(props) {
 
     return (
-      <a href='#' className='dropdown-item'>
+      <a href='#' className='menu-item'>
+        <span className='icon-button'>{props.leftIcon}</span>
         {props.children}
+
+        <span className='icon-right'>{props.rightIcon}</span>
       </a>
     );
   }
 
   return (
     <div className='dropdown'>
-
+      <DropdownItem
+      leftIcon={<ProfileIcon/>}>
+       profile </DropdownItem>
+        <DropdownItem 
+          leftIcon={<SettingsIcon/>}
+          rightIcon={<BellIcon/>}>
+          settings
+        </DropdownItem>
     </div>
   );
 }
