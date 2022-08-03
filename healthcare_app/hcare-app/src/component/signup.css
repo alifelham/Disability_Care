@@ -1,8 +1,8 @@
+
 body{
-    background:linear-gradient(to left, green, white);
+    background:grey;
     margin:0;
     padding:0;
-    box-sizing:border-box;
     color:white;
   }
   
@@ -49,3 +49,30 @@ body{
     color:red;
     cursor:pointer;
   }
+
+
+
+
+
+
+
+  
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  
+  .selectColor {
+    position: relative;
+    padding: 10px;
+    border: none;
+    border-right: 10px solid #fff;
+    outline: none;
+    width: 200px;
+    border-radius: 4px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+  }
+  
