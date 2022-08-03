@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SignUpComponent from './component/SignUpComponent'
+//import Login from './component/Login'
 import './App.css';
 import Navbar from './component/Navbar';
 import { ReactComponent as Calendar } from "./icons/calendar-date.svg";
@@ -8,6 +9,7 @@ import { ReactComponent as BellIcon } from "./icons/bell.svg";
 import { ReactComponent as ProfileIcon } from "./icons/person.svg";
 import { ReactComponent as SettingsIcon } from "./icons/gear.svg";
 import { ReactComponent as CaretIcon } from "./icons/caret-down.svg";
+import Appointments from './component/Appointments';
 
 function App() {
   return (
@@ -16,6 +18,11 @@ function App() {
         <Route exact path='/signup' element={
           < SignUpComponent>
           </SignUpComponent>}>
+        </Route>
+       
+        <Route exact path='/app' element={
+          < Appointments>
+          </Appointments>}>
         </Route>
         <Route exact path='/nav' element={
           <div>
