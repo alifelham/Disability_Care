@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './signup.css'
 
 
@@ -9,7 +9,7 @@ function SignUp() {
     return (
 
 
-        <div>
+        <div className='bg'>
 
 
             <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'></link>
@@ -28,7 +28,7 @@ function SignUp() {
                 <div className="form-box">
 
                     <div className="header-form">
-                        <h4 className="text-primary text-center"><i className="fa fa-user-circle" style={{ fontSize: "110px" }}></i></h4>
+                        <h4 className="text-center"><i  style={{color:"white", fontSize: "40px" }}>HEALTHCARE</i></h4>
                         <div className="image">
                         </div>
                     </div>
@@ -51,31 +51,27 @@ function SignUp() {
                                 <div className="input-group-prepend">
                                     <span className="input-group-text"><i className="fa fa-user"></i></span>
                                 </div>
-                                <input type="text" className="form-control" placeholder="Username" />
+                                <input type="email" className="form-control" placeholder="Email" />
                             </div>
                             <div className="input-group mb-3">
                                 <div className="input-group-prepend">
                                     <span className="input-group-text"><i className="fa fa-lock"></i></span>
                                 </div>
-                                <input type="text" className="form-control" placeholder="Password" />
+                                <input type="password" className="form-control" placeholder="Password" />
                             </div>
                             <div className="input-group mb-3">
                                 <div className="input-group-prepend">
                                     <span className="input-group-text"><i className="fa fa-lock"></i></span>
                                 </div>
-                                <input type="text" className="form-control" placeholder="Password" />
+                                <input type="password" className="form-control" placeholder=" Confirm Password" />
                             </div>
+                            <div className = "SignupButton">
                             <button type="button" className="btn btn-secondary btn-block">SIGNUP</button>
+                            </div>
                             <div className="message">
-                                <div><input type="checkbox" /> Remember ME</div>
-                                <div><a href="#">Forgot your password</a></div>
+                                <div><a href="/login">Already have an account? LOGIN</a></div>
                             </div>
                         </form>
-                        <div className="social">
-                            <a href="#"><i className="fab fa-facebook"></i></a>
-                            <a href="#"><i className="fab fa-twitter-square"></i></a>
-                            <a href="#"><i className="fab fa-google"></i></a>
-                        </div>
                     </div>
                 </div>
             </div>
