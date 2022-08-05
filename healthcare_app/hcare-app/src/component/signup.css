@@ -14,7 +14,7 @@
   }
     .form-box{
         width:400px;
-        height:500px;
+        height:550px;
         background-color:black;
         padding:30px;
         display:flex;
@@ -72,3 +72,28 @@ section {
     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
   }
   
+  .social{
+    display:flex;
+    justify-content:space-around;
+    padding-top:10px;
+    color: azure;
+  }
+  
+  .social i{
+    font-size:35px;
+    
+  }
+  
+  .social i:hover{
+    color:azure;
+    cursor:pointer;
+  }
+
+  .or{
+    align-items: center;
+    display: flex;
+    padding-top: 15px;
+    padding-left:60px;
+    color: azure;
+    font-size: 13px;
+  }

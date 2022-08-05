@@ -68,9 +68,18 @@ function SignUp() {
                             <div className = "SignupButton">
                             <button type="button" className="btn btn-secondary btn-block">SIGNUP</button>
                             </div>
+            
                             <div className="message">
-                                <div><a href="/login">Already have an account? LOGIN</a></div>
+                                <div><a href="/login">Already have an account? LOGIN</a>
+                                </div>
                             </div>
+                            <div className='or'>
+                            <a>------------ OR USE ------------</a>
+                            </div>
+                            <div className="social">
+                            <a href="#"><i className="fab fa-facebook"></i></a>
+                            <a href="#"><i className="fab fa-google"></i></a>
+                        </div>
                         </form>
                     </div>
                 </div>
