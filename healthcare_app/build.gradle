@@ -1,122 +1,43 @@
 plugins {
-	id 'org.springframework.boot' version '2.7.0'
-	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
 	id 'maven-publish'
-	id "com.moowork.node" version "1.3.1"
 }
 
-group = 'healthcare'
-// artifactId is taken by default, from folder name
-version = '1.2.8.RELEASE'
-sourceCompatibility = '18'
-
 repositories {
+	mavenLocal()
+	maven {
+		url = uri('https://repo.maven.apache.org/maven2/')
+	}
 	mavenCentral()
-	google()
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-mail'
-	implementation 'org.springframework.boot:spring-boot-starter-security'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.thymeleaf:thymeleaf:3.0.15.RELEASE'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.springframework.security:spring-security-test'
-	// https://mvnrepository.com/artifact/com.google.firebase/firebase-admin
-	implementation group: 'com.google.firebase', name: 'firebase-admin', version: '8.2.0'
-	implementation 'com.oracle.ojdbc:ojdbc8:19.3.0.0'
-	implementation 'org.hibernate:hibernate-core:6.1.0.Final'
-	implementation 'org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.6.8'
-	implementation 'com.sun.xml.bind:jaxb-core:4.0.0'
-	implementation 'javax.xml.bind:jaxb-api:2.4.0-b180830.0359'
-	implementation 'com.sun.xml.bind:jaxb-impl:4.0.0'
-	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client:2.7.0'
-	implementation 'commons-lang:commons-lang:2.6'
-	implementation 'javax.validation:validation-api:2.0.1.Final'
+	implementation 'org.springframework.boot:spring-boot-starter-security:2.7.0'
+	implementation 'org.springframework.boot:spring-boot-starter-web:2.7.0'
+	implementation 'org.springframework.boot:spring-boot-starter-validation:2.7.0'
+	implementation 'org.springframework.security:spring-security-oauth2-client:5.7.1'
 	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+	implementation 'com.google.firebase:firebase-admin:8.2.0'
+	implementation 'org.springframework.cloud:spring-cloud-gcp-data-firestore:1.2.8.RELEASE'
 	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
 	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
-	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
-	//implementation 'com.google.cloud:spring-cloud-gcp-starter-data-firestore'
-	//implementation 'com.google.cloud:spring-cloud-gcp-data-firestore'
-
+	testImplementation 'org.springframework.boot:spring-boot-starter-test:2.7.0'
+	testImplementation 'org.springframework.security:spring-security-test:5.7.1'
 }
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+description = 'oauth2-demo'
+java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 publishing {
 	publications {
-		customLibrary(MavenPublication) {
-			from components.java
-		}
-	}
-
-	repositories {
-		maven {
-			name = 'sampleRepo'
-			url = layout.buildDirectory.dir("repo")
+		maven(MavenPublication) {
+			from(components.java)
 		}
 	}
 }
 
-
-
-tasks.named('test') {
-	useJUnitPlatform()
-}
-
-
-
-
-
-
-node {
-	version = "16.15.1"
-	download = false
-	// Set the work directory for unpacking node
-	workDir = file("${project.projectDir}/src/main/hcare-app/nodejs")
-
-	// Set the work directory for NPM
-	npmWorkDir = file("${project.projectDir}/src/main/hcare-app/npm")
-
-	// Set the work directory where node_modules should be located
-	nodeModulesDir = file("${project.projectDir}/src/main/hcare-app")
-}
-
-task npmBuild(type: NpmTask) {
-	execOverrides {
-//        it.ignoreExitValue = true
-		it.workingDir = 'src/main/hcare-app'
-	}
-	args = ['run', 'build']
-}
-
-
-processResources{
-	dependsOn 'copyFrontendToBuild'
-}
-
-task copyFrontendToBuild(type: Copy) {
-	from "$projectDir/src/main/hcare-app/src/"
-//    include "*"
-	into "$buildDir/resources/main/static"
-}
-
-
-
-
-task npmShowVersion(type: NpmTask) {
-	execOverrides {
-		it.ignoreExitValue = true
-		it.workingDir = 'src/main/hcare-app'
-	}
-	args = ['--version']
-}
-
-task npmInstall2(type: NpmTask) {
-	execOverrides {
-		it.ignoreExitValue = true
-		it.workingDir = 'src/main/hcare-app'
-	}
-	args = ['install']
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
 }
