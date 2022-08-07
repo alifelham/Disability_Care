@@ -28,7 +28,7 @@ function SignUp() {
                 <div className="form-box">
 
                     <div className="header-form">
-                        <h4 className="text-center"><i  style={{color:"white", fontSize: "40px" }}>HEALTHCARE</i></h4>
+                        <h4 className="text-center"><i  style={{color:"white", fontSize: "35px" }}>REGISTER</i></h4>
                         <div className="image">
                         </div>
                     </div>
