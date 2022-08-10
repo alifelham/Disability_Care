@@ -1,6 +1,8 @@
 package com.example.healthcare.controller;
 
 import com.example.healthcare.exception.BadRequestException;
+import com.example.healthcare.exception.EmailMismatchException;
+import com.example.healthcare.exception.ResourceNotFoundException;
 import com.example.healthcare.model.AuthProvider;
 import com.example.healthcare.model.User;
 import com.example.healthcare.payload.ApiResponse;
@@ -21,6 +23,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
+import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 
 @RestController
@@ -40,9 +43,13 @@ public class AuthController {
     private TokenProvider tokenProvider;
 
     @PostMapping("/login")
-    public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) throws ExecutionException, InterruptedException {
 
         System.out.println("Login Req => " + loginRequest);
+
+        if(!userRepository.existsByEmail(loginRequest.getEmail())){
+            throw new EmailMismatchException("No emails found");
+        }
 
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
@@ -62,6 +69,10 @@ public class AuthController {
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) throws ExecutionException, InterruptedException {
         if(userRepository.existsByEmail(signUpRequest.getEmail())) {
             throw new BadRequestException("Email address already in use.");
+        }
+
+        if(!Objects.equals(signUpRequest.getPassword(), signUpRequest.getConfirm_pass())){
+            throw new BadRequestException("Passwords do not match!");
         }
 
         // Creating user's account

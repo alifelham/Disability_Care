@@ -50,8 +50,6 @@ export function signup(signupRequest) {
         method: 'POST',
         body: JSON.stringify(signupRequest)
         
-    },
-    
-    Alert.success("You're safely logged out!"));
+    });
 
 }

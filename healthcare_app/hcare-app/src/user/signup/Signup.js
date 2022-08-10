@@ -64,8 +64,8 @@ class SignupForm extends Component {
                 Alert.success("You're successfully registered. Please login to continue!");
                 this.props.history.push("/login");
             }).catch(error => {
-                console.log("Here" + error + error.message)
-                Alert.error((error && error.message) || 'The passwords dont\'t match! Please try again.');
+                if(signUpRequest.confirm_pass.localeCompare(signUpRequest.password) != 0)Alert.error((error && error.message) || "The passwords do not match! Please try again.");
+                else Alert.error((error && error.message) || "The email is already in use. Please try again with a different one.");
             });
     }
 

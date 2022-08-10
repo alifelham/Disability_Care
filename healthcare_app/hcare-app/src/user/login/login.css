@@ -1,0 +1,107 @@
+.bg {
+  background-image: url('../images/bg.png');
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: white;
+  align-items: center;
+
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  align-items: center;
+}
+
+.form-box {
+  width: 400px;
+  height: 200px;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  opacity: 0.6;
+  border-radius: 2%;
+  justify-content: center;
+
+}
+
+.header-form {
+  margin-bottom: 25px;
+  height: 40px;
+}
+
+button {
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+
+.SignupButton {
+  padding-bottom: 20px;
+}
+
+.message {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  padding-top: 10px;
+  padding-left: 10px;
+  color: azure;
+  padding-bottom: 10px;
+
+}
+
+.message a{
+  color: azure;
+  padding-right: 20px;
+}
+.message a:hover {
+  color: aqua;
+}
+
+.SignupMessage a{
+  color: azure;
+  align-self: center;
+}
+
+.SignupMessage a:hover {
+  color: aqua;
+}
+
+.SignupMessage {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  padding-bottom: 20px;
+  padding-left: 50px;
+  align-self: start;
+}
+
+.social {
+  display: flex;
+  justify-content: space-around;
+  padding: 30px;
+}
+
+.social i:hover {
+  color: azure;
+  cursor: pointer;
+}
+
+
+
+.or a{
+  text-align: center;
+  padding-top: 10px;
+  color: azure;
+  font-size: 14px;
+
+}
+
+.social a:hover{
+ color: azure;
+}

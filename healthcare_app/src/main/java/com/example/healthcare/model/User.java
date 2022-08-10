@@ -17,6 +17,7 @@ public class User {
 
     private String password;
 
+
     private AuthProvider provider;
 
     private String providerId;
