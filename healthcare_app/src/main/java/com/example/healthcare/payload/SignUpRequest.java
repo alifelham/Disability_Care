@@ -3,10 +3,6 @@ package com.example.healthcare.payload;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
-/**
- * Created by rajeevkumarsingh on 02/08/17.
- */
-
 public class SignUpRequest {
     @NotBlank
     private String name;
@@ -17,6 +13,17 @@ public class SignUpRequest {
 
     @NotBlank
     private String password;
+
+    @NotBlank
+    private String confirm_pass;
+
+    public String getConfirm_pass() {
+        return confirm_pass;
+    }
+
+    public void setConfirm_pass(String confirm_pass) {
+        this.confirm_pass = confirm_pass;
+    }
 
     public String getName() {
         return name;
