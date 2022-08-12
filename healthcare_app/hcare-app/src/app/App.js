@@ -10,7 +10,8 @@ import Login from '../user/login/Login';
 import Signup from '../user/signup/Signup';
 import Profile from '../user/doctor/profile/Profile';
 
-
+/* HOSPITAL COMPONENTS */
+import HospitalProfile from '../Hospital/Profile/HospitalProfile';
 import AppointmentReq from '../Hospital/RequestedAppointments/Appointment';
 import Appointment from '../Hospital/Appointments/Appointment';
 import AvailableDoctors from '../Hospital/Doctors/availableDoctors';
@@ -87,7 +88,9 @@ class App extends Component {
             <Route path="/profile" 
               render={(props) => <Profile authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route>
             
-            
+            {/* HOSPITAL ROUTES*/}
+            <Route path="/hprofile" 
+              render={(props) => <HospitalProfile authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route> 
             <Route path="/appreq" 
               render={(props) => <AppointmentReq authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route>
             <Route path="/app" 
