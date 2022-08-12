@@ -8,7 +8,7 @@ import AppHeader from '../common/AppHeader';
 import Home from '../home/Home';
 import Login from '../user/login/Login';
 import Signup from '../user/signup/Signup';
-import Profile from '../user/profile/Profile';
+import Profile from '../user/doctor/profile/Profile';
 import HomepagePatient from '../phome/HomepagePatient';
 import OAuth2RedirectHandler from '../user/oauth2/OAuth2RedirectHandler';
 import NotFound from '../common/NotFound';
