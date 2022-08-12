@@ -10,8 +10,8 @@ class Profile extends Component {
         return (
             <div className="profile-container">
                 <li>
-                                            <a onClick={this.props.onLogout}>Logout</a>
-                                        </li>
+                  <a onClick={this.props.onLogout}>Logout</a>
+                </li>
                 <div className="container">
                     <div className="profile-info">
                         <div className="profile-avatar">
@@ -22,12 +22,14 @@ class Profile extends Component {
                                     <div className="text-avatar">
                                         <span>{this.props.currentUser.name && this.props.currentUser.name[0]}</span>
                                     </div>
+                                    
                                 )
                             }
                         </div>
                         <div className="profile-name">
                            <h2>{this.props.currentUser.name}</h2>
                            <p className="profile-email">{this.props.currentUser.email}</p>
+                           <p>Provider: {this.props.currentUser.provider}</p>
                         </div>
                     </div>
                 </div>    

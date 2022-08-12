@@ -11,8 +11,8 @@ spring:
                             - email
                             - profile
                     facebook:
-                        clientId: 121189305185277
-                        clientSecret: 42ffe5aa7379e8326387e0fe16f34132
+                        clientId: 425905336154250
+                        clientSecret: 0757f710cb22b47505a794f30d6cd1ba
                         redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
                         scope:
                             - email

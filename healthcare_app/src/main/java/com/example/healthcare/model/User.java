@@ -3,12 +3,16 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.cloud.firestore.annotation.DocumentId;
 import org.springframework.data.annotation.Id;
 
+import javax.validation.constraints.Email;
+
 
 public class User {
+
     private Long id;
 
     private String name;
 
+    @Email
     private String email;
 
     private String imageUrl;

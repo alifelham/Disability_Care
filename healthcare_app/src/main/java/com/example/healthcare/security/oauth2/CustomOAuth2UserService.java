@@ -32,7 +32,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
 
         OAuth2User oAuth2User = super.loadUser(oAuth2UserRequest);
 
-        System.out.println("oAuth2 User Req => " + oAuth2UserRequest.getClientRegistration().getClientName());
+        System.out.println("oAuth2 User Req 2 is here");
 
         System.out.println(oAuth2User);
         try {

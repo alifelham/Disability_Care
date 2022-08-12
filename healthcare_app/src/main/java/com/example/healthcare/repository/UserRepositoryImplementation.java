@@ -9,6 +9,7 @@ import com.google.cloud.firestore.WriteResult;
 import com.google.firebase.cloud.FirestoreClient;
 import org.springframework.stereotype.Service;
 
+import javax.validation.constraints.Email;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
 
@@ -44,7 +45,7 @@ public class UserRepositoryImplementation implements UserRepository{
     }
 
     @Override
-    public User findByEmail(String email) throws ExecutionException, InterruptedException {
+    public User findByEmail(@Email String email) throws ExecutionException, InterruptedException {
         Firestore dbFirestore = FirestoreClient.getFirestore();
 
         Iterable<DocumentReference>documentReferences = dbFirestore.collection("users").listDocuments();
@@ -60,11 +61,10 @@ public class UserRepositoryImplementation implements UserRepository{
             DocumentSnapshot documentSnapshot = future.get();
 
             user = documentSnapshot.toObject(User.class);
-            System.out.println("Here " + user.getEmail());
             if(Objects.equals(user.getEmail(), email))break;
         }
 
-        System.out.println("In find by email =>" + user.getEmail());
+        //System.out.println("In find by email =>" + user.getEmail());
 
         return user;
     }

@@ -3,9 +3,6 @@ import './login.css';
 import { GOOGLE_AUTH_URL, FACEBOOK_AUTH_URL, GITHUB_AUTH_URL, ACCESS_TOKEN } from '../../constants';
 import { login } from '../../util/APIUtils';
 import { Link, Redirect } from 'react-router-dom'
-import fbLogo from '../../img/fb-logo.png';
-import googleLogo from '../../img/google-logo.png';
-import githubLogo from '../../img/github-logo.png';
 import Alert from 'react-s-alert';
 
 class Login extends Component {
@@ -76,17 +73,18 @@ class LoginForm extends Component {
 
         login(loginRequest)
             .then(response => {
-                //console.log("Access token is" + response.accessToken);
+                console.log("Access token is" + response.accessToken);
                 localStorage.setItem(ACCESS_TOKEN, response.accessToken);
                 Alert.success("You're successfully logged in!");
+                console.log("I am here")
                 this.props.history.push("/profile");
             }).catch(error => {
-                console.log(error);
-                console.log(error.error);
-                console.log('Not Found');
+                //console.log('Not Found');
+
+                console.log(error)
                 
                 if(error.error === 'Not Found')Alert.error((error && error.message) || 'Email not found!');
-                else Alert.error((error && error.message) || 'Incorrect Password!');
+                else if(error.error === 'Unauthorized')Alert.error((error && error.message) || 'Incorrect Password!');
             });
     }
 

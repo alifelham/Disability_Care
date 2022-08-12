@@ -45,7 +45,7 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) throws ExecutionException, InterruptedException {
 
-        System.out.println("Login Req => " + loginRequest);
+        //System.out.println("Login Req => " + loginRequest);
 
         if(!userRepository.existsByEmail(loginRequest.getEmail())){
             throw new EmailMismatchException("No emails found");
@@ -61,7 +61,7 @@ public class AuthController {
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         String token = tokenProvider.createToken(authentication);
-        System.out.println("Token is: " + token);
+        //System.out.println("Token is: " + token);
         return ResponseEntity.ok(new AuthResponse(token));
     }
 
