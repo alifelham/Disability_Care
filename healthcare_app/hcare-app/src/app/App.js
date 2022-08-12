@@ -16,6 +16,10 @@ import AppointmentReq from '../Hospital/RequestedAppointments/Appointment';
 import Appointment from '../Hospital/Appointments/Appointment';
 import AvailableDoctors from '../Hospital/Doctors/availableDoctors';
 
+/* PHARMACY COMPONENTS */
+import MedRequest from '../Pharmacy/MedicineRequests/MedRequest';
+
+
 
 import HomepagePatient from '../phome/HomepagePatient';
 import OAuth2RedirectHandler from '../user/oauth2/OAuth2RedirectHandler';
@@ -84,10 +88,13 @@ class App extends Component {
     else return (
       <div className="app">
           <Switch>
+
+            {/* PATIENT ROUTES*/}
             <Route exact path="/" component={Home} ></Route>           
             <Route path="/profile" 
               render={(props) => <Profile authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route>
             
+
             {/* HOSPITAL ROUTES*/}
             <Route path="/hprofile" 
               render={(props) => <HospitalProfile authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route> 
@@ -98,6 +105,12 @@ class App extends Component {
              <Route path="/avdoc" 
               render={(props) => <AvailableDoctors authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route>
             
+
+            {/* PHARMACY ROUTES*/}
+            <Route path="/medreq" 
+              render={(props) => <MedRequest authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route> 
+            
+
 
 
 

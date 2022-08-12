@@ -55,23 +55,10 @@ class HospitalProfile extends Component {
                     </nav>
 
                     <div className="profile-container">
-                    
+                    <div><h1>Hospital Profile:</h1></div>
                             <div className="profile-info">
-                                <h1>Doctor Profile:</h1>
                                 
-                                <div className="profile-avatar">
-                                    {
-                                        this.props.currentUser.imageUrl ? (
-                                            <img src={this.props.currentUser.imageUrl} alt={this.props.currentUser.name} />
-                                        ) : (
-                                            <div className="text-avatar">
-                                                <span>{this.props.currentUser.name && this.props.currentUser.name[0]}</span>
-                                            </div>
-
-                                        )
-                                    }
-                                </div> 
-                                
+                                           
                                 <div className="profile-name">
                                     <p> Hospital: &ensp; {this.props.currentUser.name}</p>
                                     <p > Email: &emsp; &emsp; &ensp; {this.props.currentUser.email}</p>
