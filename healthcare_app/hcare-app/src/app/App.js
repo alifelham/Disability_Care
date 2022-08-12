@@ -9,8 +9,12 @@ import Home from '../home/Home';
 import Login from '../user/login/Login';
 import Signup from '../user/signup/Signup';
 import Profile from '../user/doctor/profile/Profile';
+
+
 import AppointmentReq from '../Hospital/RequestedAppointments/Appointment';
 import Appointment from '../Hospital/Appointments/Appointment';
+import AvailableDoctors from '../Hospital/Doctors/availableDoctors';
+
 
 import HomepagePatient from '../phome/HomepagePatient';
 import OAuth2RedirectHandler from '../user/oauth2/OAuth2RedirectHandler';
@@ -82,10 +86,14 @@ class App extends Component {
             <Route exact path="/" component={Home} ></Route>           
             <Route path="/profile" 
               render={(props) => <Profile authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route>
+            
+            
             <Route path="/appreq" 
               render={(props) => <AppointmentReq authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route>
             <Route path="/app" 
               render={(props) => <Appointment authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route>
+             <Route path="/avdoc" 
+              render={(props) => <AvailableDoctors authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route>
             
 
 
