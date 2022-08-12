@@ -6,29 +6,13 @@ import { Link, Redirect } from 'react-router-dom'
 import Alert from 'react-s-alert';
 
 class Login extends Component {
-    componentDidMount() {
-        // If the OAuth2 login encounters an error, the user is redirected to the /login page with an error.
-        // Here we display the error and then remove the error query parameter from the location.
-        if (this.props.location.state && this.props.location.state.error) {
-            setTimeout(() => {
-                Alert.error(this.props.location.state.error, {
-                    timeout: 5000
-                });
-                this.props.history.replace({
-                    pathname: this.props.location.pathname,
-                    state: {}
-                });
-            }, 100);
-        }
-    }
-
     render() {
-        if (this.props.authenticated) {
+        if(localStorage.getItem(ACCESS_TOKEN)) {
             return <Redirect
                 to={{
-                    pathname: "/",
-                    state: { from: this.props.location }
-                }} />;
+                pathname: "/phome",
+                state: { from: this.props.location }
+            }}/>;            
         }
 
         return (
@@ -76,8 +60,9 @@ class LoginForm extends Component {
                 console.log("Access token is" + response.accessToken);
                 localStorage.setItem(ACCESS_TOKEN, response.accessToken);
                 Alert.success("You're successfully logged in!");
-                console.log("I am here")
-                this.props.history.push("/profile");
+                console.log("I am here");
+                this.props.history.push("/phome")
+                ;
             }).catch(error => {
                 //console.log('Not Found');
 
@@ -122,8 +107,9 @@ class LoginForm extends Component {
                             <a>------------ OR USE ------------</a>
                         </div>
                         <div className="social">
-                            <a href={FACEBOOK_AUTH_URL}><i className="fab fa-facebook"></i></a>
+                           
                             <a href={GOOGLE_AUTH_URL}><i className="fab fa-google"></i></a>
+                            <a href={FACEBOOK_AUTH_URL}><i className="fab fa-facebook"></i></a>
                         </div>
                         <div className="SignupMessage">
                             <div><a href="/signup">Don't have an account? SIGNUP</a></div>

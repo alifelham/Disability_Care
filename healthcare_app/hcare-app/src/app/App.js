@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+  Redirect,
   Route,
   Switch
 } from 'react-router-dom';
@@ -14,11 +15,11 @@ import NotFound from '../common/NotFound';
 import LoadingIndicator from '../common/LoadingIndicator';
 import { getCurrentUser } from '../util/APIUtils';
 import { ACCESS_TOKEN } from '../constants';
-import PrivateRoute from '../common/PrivateRoute';
 import Alert from 'react-s-alert';
 import 'react-s-alert/dist/s-alert-default.css';
 import 'react-s-alert/dist/s-alert-css-effects/slide.css';
 import './App.css';
+
 
 class App extends Component {
   constructor(props) {
@@ -38,11 +39,13 @@ class App extends Component {
     getCurrentUser()
     .then(response => {
       console.log(response);
+      
       this.setState({
         currentUser: response,
         authenticated: true,
         loading: false
       })
+      
     }).catch(error => {
       this.setState({
         loading: false
@@ -61,7 +64,7 @@ class App extends Component {
 
   componentDidMount() {
     
-    console.log(JSON);
+    console.log("In compp");
     this.loadCurrentlyLoggedInUser();
   }
 
@@ -70,18 +73,18 @@ class App extends Component {
       return <LoadingIndicator />
     }
 
-    return (
+    else return (
       <div className="app">
           <Switch>
             <Route exact path="/" component={Home} ></Route>           
-            <PrivateRoute path="/profile" authenticated={this.state.authenticated} currentUser={this.state.currentUser}
-              component={Profile} onLogout={this.handleLogout}></PrivateRoute>
+            <Route path="/profile" 
+              render={(props) => <Profile authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route>
             <Route path="/login"
               render={(props) => <Login authenticated={this.state.authenticated} {...props} />}></Route>
             <Route path="/signup"
               render={(props) => <Signup authenticated={this.state.authenticated} {...props} />}></Route>
             <Route path="/phome"
-              render={(props) => <HomepagePatient authenticated={this.state.authenticated} {...props} />}></Route>
+              render={(props) => <HomepagePatient authenticated={this.state.authenticated} onLogout = {this.handleLogout} {...props} />}></Route>
             <Route path="/oauth2/redirect" component={OAuth2RedirectHandler}></Route>  
             <Route component={NotFound}></Route>
           </Switch>

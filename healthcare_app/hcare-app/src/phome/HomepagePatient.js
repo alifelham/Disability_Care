@@ -8,7 +8,18 @@ import { Link, Redirect } from 'react-router-dom'
 import Alert from 'react-s-alert';
 
 class HomepagePatient extends Component {
+  constructor(props) {
+    super(props);
+}
+
   render() {
+    if(!localStorage.getItem(ACCESS_TOKEN)){
+      return <Redirect
+          to={{
+          pathname: "/login",
+          state: { from: this.props.location }
+      }}/>;    
+  }
     return (
       <div className='bg'>
         <meta charSet="UTF-8" />
@@ -34,7 +45,7 @@ class HomepagePatient extends Component {
             <h6 className="brand"><a href="#"><img src="https://i.postimg.cc/Y2RVP2ch/logo.png" /></a></h6>
             <div className="main_list" id="mainListDiv">
               <ul>
-                <li class="box"><a href="#">Home</a></li>
+                <li class="box"><a href="phome">Home</a></li>
                 <li class="box"><a href="#">Medicine</a></li>
                 <li class="box"><a href="#">Tests</a></li>
                 <div className="dropdown">
@@ -45,9 +56,9 @@ class HomepagePatient extends Component {
                   </div>
                 </div>
 
-                <li class="box"><a href="#">Profile</a></li>
+                <li class="box"><a href="/profile">Profile</a></li>
                 {/* <li><button className="logout-button"><a href="#">Logout</a></button></li> */}
-                <li><button className="logout-button"><a href="#">Logout</a></button></li>
+                <li><button className="logout-button"><a onClick={this.props.onLogout}>Logout</a></button></li>
               </ul>
               <div style={{ clear: 'both' }} />
             </div>

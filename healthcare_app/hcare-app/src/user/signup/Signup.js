@@ -7,12 +7,12 @@ import './signupp.css'
 
 class Signup extends Component {
     render() {
-        if (this.props.authenticated) {
+        if(this.props.authenticated) {
             return <Redirect
                 to={{
-                    pathname: "/",
-                    state: { from: this.props.location }
-                }} />;
+                pathname: "/profile",
+                state: { from: this.props.location }
+            }}/>;            
         }
 
         return (
@@ -61,8 +61,8 @@ class SignupForm extends Component {
 
         signup(signUpRequest)
             .then(response => {
+                this.props.history.push("/login")
                 Alert.success("You're successfully registered. Please login to continue!");
-                this.props.history.push("/login");
             }).catch(error => {
                 if(signUpRequest.confirm_pass.localeCompare(signUpRequest.password) != 0)Alert.error((error && error.message) || "The passwords do not match! Please try again.");
                 else Alert.error((error && error.message) || "The email is already in use. Please try again with a different one.");
@@ -118,8 +118,9 @@ class SignupForm extends Component {
                         <a>------------ OR USE ------------</a>
                     </div>
                     <div className="social">
-                        <a href={FACEBOOK_AUTH_URL}><i className="fab fa-facebook"></i></a>
+                        
                         <a href={GOOGLE_AUTH_URL}><i className="fab fa-google"></i></a>
+                        <a href={FACEBOOK_AUTH_URL}><i className="fab fa-facebook"></i></a>
                     </div>
                 </form>
             </div>
