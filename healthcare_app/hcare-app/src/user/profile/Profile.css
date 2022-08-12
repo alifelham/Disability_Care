@@ -1,9 +1,31 @@
 .profile-container {
-    padding-top: 30px;
+    padding-top: 120px;
+    margin: auto;
+    max-width: 700px;
+
 }
 
 .profile-info {
-    text-align: center;
+  box-shadow: 10px 15px rgb(154, 152, 152);
+  margin-top: 10px;
+  background-color: #fcd89e;
+  border-radius: 30px;
+  padding: 30px;
+  box-sizing: border-box; 
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+@media (max-width: 800px) {
+  .profile-info {
+    flex-direction: column;
+  }
+}
+
+.profile-container :hover{
+  background-color: #f9cc7f;
 }
 
 .profile-info .profile-avatar img {
@@ -16,6 +38,17 @@
     font-size: 18px;
     color: black;
 }
+
+.profile-name p{
+  text-align: left;
+  font-size: 17px;
+}
+
+.profile-info h1{
+  color: rgb(89, 89, 89);
+  padding-bottom: 10px;
+}
+
 
 .profile-info .profile-email {
     font-weight: 400;
@@ -61,10 +94,9 @@
   nav{
     width:100%;
     background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0.2) 75%, rgba(255, 255, 255, 0) 100%);
-    padding: 0 45px;
     box-sizing:border-box;
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
-    position: fixed;
+    position: absolute;
     top: 0;
   }
   
@@ -275,6 +307,13 @@ nav ul li a:hover{
   }
 
   /* Navbar section */
+.navb{
+  display: flex;
+}
+
+.brand h6{
+ width: fit-content;
+}
 
 .nav{
   width: 100%;

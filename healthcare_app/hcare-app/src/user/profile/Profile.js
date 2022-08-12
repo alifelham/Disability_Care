@@ -29,18 +29,8 @@ class Profile extends Component {
                 <meta charSet="utf-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
                 <link href='https://fonts.googleapis.com/css?family=Readex Pro' rel='stylesheet'></link>
-                <div className="container">
-                    <p style={{ backgroundImage: 'url("https://i.postimg.cc/zBHgmGvK/bg.png")' }}>
-                    </p><div className="responsive-bar">
-                        <h6 className="brand"><a href="#"><img className="logo" src="https://i.postimg.cc/Y2RVP2ch/logo.png" /></a></h6>
-                        <h4 className="menu"><img classname="nav" src="https://i.postimg.cc/J499N6Vq/nav.png" /></h4>
-                        <div style={{ clear: 'both' }} />
-                    </div>
-                    {/*<div class="hamburger">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
-    </div> */}
+                
+             
                     <nav className="navb">
                         <h6 className="brand"><a href="#"><img src="https://i.postimg.cc/Y2RVP2ch/logo.png" /></a></h6>
                         <div className="main_list" id="mainListDiv">
@@ -72,10 +62,13 @@ class Profile extends Component {
                         </div>
 
                     </nav>
+
                     <div className="profile-container">
-                        <div className="container">
+                    
                             <div className="profile-info">
-                                <div className="profile-avatar">
+                                <h1>USER INFORMATION:</h1>
+                                {/*
+                                (<div className="profile-avatar">
                                     {
                                         this.props.currentUser.imageUrl ? (
                                             <img src={this.props.currentUser.imageUrl} alt={this.props.currentUser.name} />
@@ -86,19 +79,40 @@ class Profile extends Component {
 
                                         )
                                     }
-                                </div>
+                                </div> 
+                                */}
                                 <div className="profile-name">
-                                    <h2>{this.props.currentUser.name}</h2>
-                                    <p className="profile-email">{this.props.currentUser.email}</p>
-                                    <p>Provider: {this.props.currentUser.provider}</p>
+                                    <p> Username: &ensp; {this.props.currentUser.name}</p>
+                                    <p > Email: &emsp; &emsp; &ensp; {this.props.currentUser.email}</p>
+                                    <p> PID: &emsp; {this.props.currentUser.id}</p>
+                                    <p> Address:  &emsp; {this.props.currentUser.address}</p>
+                                    <p>Provider:  &emsp; {this.props.currentUser.provider}</p>
                                 </div>
                             </div>
-                        </div>
+                            <div className="profile-info">
+                                <h1>MEDICAL HISTORY:</h1>
+                                <div className="profile-name">
+                                    <p> Diabetes: &ensp; {this.props.currentUser.diabetes}</p>
+                                    <p > Blood Pressure: &emsp; &emsp; &ensp; {this.props.currentUser.bp}</p>
+                                    <p> Asthma: &emsp; {this.props.currentUser.asthma}</p>
+                                    <p> Allergies:  &emsp; {this.props.currentUser.name}</p>
+                                    <p> Kidney:  &emsp; {this.props.currentUser.name}</p>
+                                </div>
+                            </div>
+                            <div className="profile-info">
+                                <h1>MEDICAL REPORTS:</h1>
+                                <div className="profile-name">
+                                    <p> Date: &ensp; {this.props.currentUser.name}</p>
+                                    <p > Date: &emsp; &emsp; &ensp; {this.props.currentUser.name}</p>
+                                    <p> Date: &emsp; {this.props.currentUser.name}</p>
+                                    <p> Date:  &emsp; {this.props.currentUser.name}</p>
+                                    <p> Date:  &emsp; {this.props.currentUser.name}</p>
+                                </div>
+                            </div>
                     </div>
 
 
                 </div>
-            </div>
     );
     }
 }
