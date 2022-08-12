@@ -82,7 +82,7 @@ class LoginForm extends Component {
                 this.props.history.push("/profile");
             }).catch(error => {
                 console.log("Access token is" + loginRequest.accessToken);
-                Alert.error((error && error.message) || 'Oops! Something went wrong. Please try again!');
+                Alert.error((error && error.message) || 'Incorrect password!');
             });
     }
 

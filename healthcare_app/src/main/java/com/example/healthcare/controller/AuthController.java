@@ -1,8 +1,6 @@
 package com.example.healthcare.controller;
 
 import com.example.healthcare.exception.BadRequestException;
-import com.example.healthcare.exception.EmailMismatchException;
-import com.example.healthcare.exception.ResourceNotFoundException;
 import com.example.healthcare.model.AuthProvider;
 import com.example.healthcare.model.User;
 import com.example.healthcare.payload.ApiResponse;
@@ -43,13 +41,9 @@ public class AuthController {
     private TokenProvider tokenProvider;
 
     @PostMapping("/login")
-    public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) throws ExecutionException, InterruptedException {
+    public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
         System.out.println("Login Req => " + loginRequest);
-
-        if(!userRepository.existsByEmail(loginRequest.getEmail())){
-            throw new EmailMismatchException("No emails found");
-        }
 
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
