@@ -1,25 +1,23 @@
 /*import React from 'react'; */
 import './HomepagePatient.css';
+/*import {myfunction } from './nav.js' */
 import React, { Component } from 'react';
 import { GOOGLE_AUTH_URL, FACEBOOK_AUTH_URL, GITHUB_AUTH_URL, ACCESS_TOKEN } from '../constants';
-import { login } from '../util/APIUtils'; 
+import { login } from '../util/APIUtils';
 import { Link, Redirect } from 'react-router-dom'
 import Alert from 'react-s-alert';
 
 class HomepagePatient extends Component {
-
   render() {
-
     return (
       <div className='bg'>
         <meta charSet="UTF-8" />
-        <title>CodePen - portfolio home page 3</title>
-        <link rel="stylesheet" href="./homepagePatient.css" />
-        {/* partial:index.partial.html */}
+        <title>Patient Homepage</title>
+        <link rel="stylesheet" href="./HomepagePatient.css" />
+        
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-        <title>homepage</title>
-        <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet" />
+        <link href='https://fonts.googleapis.com/css?family=Readex Pro' rel='stylesheet'></link>
         <div className="container">
           <p style={{ backgroundImage: 'url("https://i.postimg.cc/zBHgmGvK/bg.png")' }}>
           </p><div className="responsive-bar">
@@ -27,31 +25,102 @@ class HomepagePatient extends Component {
             <h4 className="menu"><img classname="nav" src="https://i.postimg.cc/J499N6Vq/nav.png" /></h4>
             <div style={{ clear: 'both' }} />
           </div>
-          <nav>
+          {/*<div class="hamburger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+    </div> */}
+          <nav className="navb">
             <h6 className="brand"><a href="#"><img src="https://i.postimg.cc/Y2RVP2ch/logo.png" /></a></h6>
-            <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Medicine</a></li>
-              <li><a href="#">Tests</a></li>
-              <li><a href="#">Appointments</a></li>
-              <li><a href="#">Profile</a></li>
-              <li><a href="#">Logout</a></li>
-            </ul>
-            <div style={{ clear: 'both' }} />
+            <div className="main_list" id="mainListDiv">
+              <ul>
+                <li class="box"><a href="#">Home</a></li>
+                <li class="box"><a href="#">Medicine</a></li>
+                <li class="box"><a href="#">Tests</a></li>
+                <div className="dropdown">
+                  <button className="dropbtn"><a href="#">Appointments</a></button>
+                  <div className="dropdown-content">
+                    <a href="#">Book </a>
+                    <a href="#">Scheduled</a>
+                  </div>
+                </div>
+
+                <li class="box"><a href="#">Profile</a></li>
+                {/* <li><button className="logout-button"><a href="#">Logout</a></button></li> */}
+                <li><button className="logout-button"><a href="#">Logout</a></button></li>
+              </ul>
+              <div style={{ clear: 'both' }} />
+            </div>
+
+            <div className="media_button">
+              <button className="main_media_button" id="mediaButton">
+                <span />
+                <span />
+                <span />
+              </button>
+            </div>
+  
           </nav>
           <div className="content">
             <div className="content-inner">
-              <button className="voice"><a href='#'><img src="https://i.postimg.cc/44pLCJrz/voice.png" /></a></button></div>
+              <button className="voice"><a href='#'><img src="https://i.postimg.cc/44pLCJrz/voice.png" /></a></button>
+            </div>
+            <div className="dropdown">
+              <button className="emergency"><a href="#">Emergency</a></button>
 
-            <button className="emergency"><p><a href='#'>Emergency</a></p></button>
+              <div class="dropdown-content">
+                <a href="#">Ambulance </a>
+                <a href="#">Doctor</a>
+              </div>
+            </div>
+
           </div>
         </div>
-        {/* partial */}
       </div>
 
     );
   }
 }
+class hamburgeroption extends Component{
+  constructor(props){
+    super(props);
+    this.hamburger =this.hamburger.bind(this);
+  }
 
+
+
+hamburger(document) {
+  var mainListDiv = document.getElementById("mainListDiv"),
+    mediaButton = document.getElementById("mediaButton");
+
+  mediaButton.onclick = function () {
+
+    "use strict";
+
+    mainListDiv.classList.toggle("show_list");
+    mediaButton.classList.toggle("active");
+  };
+}
+}
 export default HomepagePatient;
+{/*}
+
+hamburgerfun(){
+const hamburger = document.querySelector(".hamburger");
+const navLinks = document.querySelector(".nav-links");
+const links = document.querySelectorAll(".nav-links li");
+
+hamburger.addEventListener('click', ()=>{
+   //Animate Links
+    navLinks.classList.toggle("open");
+    links.forEach(link => {
+        link.classList.toggle("fade");
+    });
+
+    //Hamburger Animation
+    hamburger.classList.toggle("toggle");
+});
+} */}
+
+
 
