@@ -61,10 +61,17 @@ public class UserRepositoryImplementation implements UserRepository{
             DocumentSnapshot documentSnapshot = future.get();
 
             user = documentSnapshot.toObject(User.class);
-            if(Objects.equals(user.getEmail(), email))break;
+            if(Objects.equals(user.getEmail(), email))return user;
         }
 
         //System.out.println("In find by email =>" + user.getEmail());
+
+        user.setEmail("null");
+        user.setEmailVerified(false);
+        user.setId(-1L);
+        user.setImageUrl("null");
+        user.setName("null");
+
 
         return user;
     }

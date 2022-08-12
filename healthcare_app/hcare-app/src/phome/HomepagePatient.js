@@ -1,144 +1,56 @@
-import React from 'react';
+/*import React from 'react'; */
 import './HomepagePatient.css';
+import React, { Component } from 'react';
+import { GOOGLE_AUTH_URL, FACEBOOK_AUTH_URL, GITHUB_AUTH_URL, ACCESS_TOKEN } from '../constants';
+import { login } from '../util/APIUtils'; 
+import { Link, Redirect } from 'react-router-dom'
+import Alert from 'react-s-alert';
 
-function HomepagePatient() {
-  return React.createElement(
-    'div',
-    { className: 'bg' },
-    React.createElement('meta', { charSet: 'UTF-8' }),
-    React.createElement(
-      'title',
-      null,
-      'Homepage Patient'
-    ),
-    React.createElement('link', { rel: 'stylesheet', href: './HomepagePatient.css' }),
-    React.createElement('meta', { charSet: 'utf-8' }),
-    React.createElement('meta', { name: 'viewport', content: 'width=device-width, initial-scale=1, user-scalable=no' }),
-    React.createElement(
-      'title',
-      null,
-      'homepage'
-    ),
-    React.createElement('link', { href: 'https://fonts.googleapis.com/css?family=Roboto+Condensed', rel: 'stylesheet' }),
-    React.createElement(
-      'div',
-      { className: 'container' },
-      React.createElement('p', { style: { backgroundImage: 'url("https://i.postimg.cc/zBHgmGvK/bg.png")' } }),
-      React.createElement(
-        'div',
-        { className: 'responsive-bar' },
-        React.createElement(
-          'h6',
-          { className: 'brand' },
-          React.createElement(
-            'a',
-            { href: '#' },
-            React.createElement('img', { className: 'logo', src: 'https://i.postimg.cc/Y2RVP2ch/logo.png' })
-          )
-        ),
-        React.createElement(
-          'h4',
-          { className: 'menu' },
-          React.createElement('img', { classname: 'nav', src: 'https://i.postimg.cc/J499N6Vq/nav.png' })
-        ),
-        React.createElement('div', { style: { clear: 'both' } })
-      ),
-      React.createElement(
-        'nav',
-        null,
-        React.createElement(
-          'h6',
-          { className: 'brand' },
-          React.createElement(
-            'a',
-            { href: '#' },
-            React.createElement('img', { src: 'https://i.postimg.cc/Y2RVP2ch/logo.png' })
-          )
-        ),
-        React.createElement(
-          'ul',
-          null,
-          React.createElement(
-            'li',
-            null,
-            React.createElement(
-              'a',
-              { href: '#' },
-              'Home'
-            )
-          ),
-          React.createElement(
-            'li',
-            null,
-            React.createElement(
-              'a',
-              { href: '#' },
-              'Medicine'
-            )
-          ),
-          React.createElement(
-            'li',
-            null,
-            React.createElement(
-              'a',
-              { href: '#' },
-              'Tests'
-            )
-          ),
-          React.createElement(
-            'li',
-            null,
-            React.createElement(
-              'a',
-              { href: '#' },
-              'Appointments'
-            )
-          ),
-          React.createElement(
-            'li',
-            null,
-            React.createElement(
-              'a',
-              { href: '#' },
-              'Profile'
-            )
-          ),
-          React.createElement(
-            'li',
-            null,
-            React.createElement(
-              'a',
-              { href: '#' },
-              'Logout'
-            )
-          )
-        ),
-        React.createElement('div', { style: { clear: 'both' } })
-      ),
-      React.createElement(
-        'div',
-        { className: 'content' },
-        React.createElement(
-          'div',
-          { className: 'content-inner' },
-          React.createElement(
-            'button',
-            { className: 'voice', href: '#' },
-            React.createElement('img', { src: 'https://i.postimg.cc/44pLCJrz/voice.png' })
-          )
-        ),
-        React.createElement(
-          'button',
-          { className: 'emergency', href: '#' },
-          React.createElement(
-            'p',
-            null,
-            'Emergency'
-          )
-        )
-      )
-    )
-  );
+class HomepagePatient extends Component {
+
+  render() {
+
+    return (
+      <div className='bg'>
+        <meta charSet="UTF-8" />
+        <title>CodePen - portfolio home page 3</title>
+        <link rel="stylesheet" href="./homepagePatient.css" />
+        {/* partial:index.partial.html */}
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <title>homepage</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet" />
+        <div className="container">
+          <p style={{ backgroundImage: 'url("https://i.postimg.cc/zBHgmGvK/bg.png")' }}>
+          </p><div className="responsive-bar">
+            <h6 className="brand"><a href="#"><img className="logo" src="https://i.postimg.cc/Y2RVP2ch/logo.png" /></a></h6>
+            <h4 className="menu"><img classname="nav" src="https://i.postimg.cc/J499N6Vq/nav.png" /></h4>
+            <div style={{ clear: 'both' }} />
+          </div>
+          <nav>
+            <h6 className="brand"><a href="#"><img src="https://i.postimg.cc/Y2RVP2ch/logo.png" /></a></h6>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Medicine</a></li>
+              <li><a href="#">Tests</a></li>
+              <li><a href="#">Appointments</a></li>
+              <li><a href="#">Profile</a></li>
+              <li><a href="#">Logout</a></li>
+            </ul>
+            <div style={{ clear: 'both' }} />
+          </nav>
+          <div className="content">
+            <div className="content-inner">
+              <button className="voice"><a href='#'><img src="https://i.postimg.cc/44pLCJrz/voice.png" /></a></button></div>
+
+            <button className="emergency"><p><a href='#'>Emergency</a></p></button>
+          </div>
+        </div>
+        {/* partial */}
+      </div>
+
+    );
+  }
 }
 
 export default HomepagePatient;

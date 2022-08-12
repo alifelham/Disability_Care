@@ -17,6 +17,7 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 
@@ -53,9 +54,10 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
         System.out.println("In process OAuth2User" + oAuth2UserInfo.getEmail());
         User user = userRepository.findByEmail(oAuth2UserInfo.getEmail());
 
-        System.out.println("User in process" + user);
-        if(user.getEmail() != null) {
+        System.out.println("User in process" + user.getEmail());
+        if(!Objects.equals(user.getEmail(), "null")) {
             if(!user.getProvider().equals(AuthProvider.valueOf(oAuth2UserRequest.getClientRegistration().getRegistrationId()))) {
+                System.out.println("Hereeeeee");
                 throw new OAuth2AuthenticationProcessingException("Looks like you're signed up with " +
                         user.getProvider() + " account. Please use your " + user.getProvider() +
                         " account to login.");
@@ -65,7 +67,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
             user = registerNewUser(oAuth2UserRequest, oAuth2UserInfo);
         }
 
-        System.out.println("In if ==> " + user.getEmail());
+        System.out.println("In ifffffff ==> " + user.getEmail());
         return UserPrincipal.create(user, oAuth2User.getAttributes());
     }
 
