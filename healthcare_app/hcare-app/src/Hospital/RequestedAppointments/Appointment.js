@@ -7,7 +7,7 @@ import { login } from '../../util/APIUtils';
 import { Link, Redirect } from 'react-router-dom'
 import Alert from 'react-s-alert';
 
-var appointments = []
+var appointments = [1, 2, 3, 4]
 
 class AppointmentReq extends Component {
     constructor(props) {
@@ -39,7 +39,7 @@ class AppointmentReq extends Component {
                             <ul>
                                 <li class="box"><a href="hhome">Home</a></li>
                                 <li class="box"><a href="/appreq">Appointment Requests</a></li>
-                                <li class="box"><a href="#">Appointments</a></li>
+                                <li class="box"><a href="/app">Appointments</a></li>
                                 <li class="box"><a href="/hprofile">Profile</a></li>
                                 <li><button className="logout-button"><a onClick={this.props.onLogout}>Logout</a></button></li>
                             </ul>

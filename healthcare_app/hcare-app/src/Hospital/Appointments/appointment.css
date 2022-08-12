@@ -525,7 +525,7 @@ nav ul li a:hover{
 
 
 
-.cancel-button{
+.defer-button{
     background-color:   #CD5C5C;
     border: 1.5px solid  #CD5C5C;
     border-radius: 2em;
@@ -536,7 +536,7 @@ nav ul li a:hover{
 
 }
 
-.assigned-button{
+.assign-button{
     background-color:   #60c81f;
     border: 1.5px solid  #60c81f;
     border-radius: 2em;
