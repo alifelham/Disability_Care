@@ -76,13 +76,17 @@ class LoginForm extends Component {
 
         login(loginRequest)
             .then(response => {
-                console.log("Access token is" + response.accessToken);
+                //console.log("Access token is" + response.accessToken);
                 localStorage.setItem(ACCESS_TOKEN, response.accessToken);
                 Alert.success("You're successfully logged in!");
                 this.props.history.push("/profile");
             }).catch(error => {
-                console.log("Access token is" + loginRequest.accessToken);
-                Alert.error((error && error.message) || 'Incorrect password!');
+                console.log(error);
+                console.log(error.error);
+                console.log('Not Found');
+                
+                if(error.error === 'Not Found')Alert.error((error && error.message) || 'Email not found!');
+                else Alert.error((error && error.message) || 'Incorrect Password!');
             });
     }
 
