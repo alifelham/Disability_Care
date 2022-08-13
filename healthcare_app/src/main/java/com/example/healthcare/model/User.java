@@ -1,7 +1,4 @@
 package com.example.healthcare.model;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.google.cloud.firestore.annotation.DocumentId;
-import org.springframework.data.annotation.Id;
 
 import javax.validation.constraints.Email;
 
@@ -25,6 +22,16 @@ public class User {
     private AuthProvider provider;
 
     private String providerId;
+
+    private String userType;
+
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
 
     public Long getId() {
         return id;
