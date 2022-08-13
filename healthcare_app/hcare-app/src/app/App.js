@@ -1,14 +1,27 @@
 import React, { Component } from 'react';
 import {
-  Redirect,
   Route,
   Switch
 } from 'react-router-dom';
 import AppHeader from '../common/AppHeader';
 import Home from '../home/Home';
+import LoadingIndicator from '../common/LoadingIndicator';
+import { getCurrentUser } from '../util/APIUtils';
+import { ACCESS_TOKEN } from '../constants';
+import Alert from 'react-s-alert';
+import 'react-s-alert/dist/s-alert-default.css';
+import 'react-s-alert/dist/s-alert-css-effects/slide.css';
+import './App.css';
+
+
+/* SYSTEM COMPONENTS */
 import Login from '../user/login/Login';
 import Signup from '../user/signup/Signup';
-import Profile from '../user/doctor/profile/Profile';
+import OAuth2RedirectHandler from '../user/oauth2/OAuth2RedirectHandler';
+import NotFound from '../common/NotFound';
+
+/* PATIENT COMPONENTS */
+import HomepagePatient from '../phome/HomepagePatient';
 
 /* HOSPITAL COMPONENTS */
 import HospitalProfile from '../Hospital/Profile/HospitalProfile';
@@ -21,17 +34,13 @@ import MedRequest from '../Pharmacy/MedicineRequests/MedRequest';
 import MedDelivery from '../Pharmacy/MedicineDelivery/MedDelivery';
 import PharmaProfile from '../Pharmacy/PharmaProfile/PharmaProfile';
 
+/* DOCTOR COMPONENTS */
+import Profile from '../user/doctor/profile/Profile';
+import DocAppointment from '../Doctor/Appointments/DocAppointment';
 
-import HomepagePatient from '../phome/HomepagePatient';
-import OAuth2RedirectHandler from '../user/oauth2/OAuth2RedirectHandler';
-import NotFound from '../common/NotFound';
-import LoadingIndicator from '../common/LoadingIndicator';
-import { getCurrentUser } from '../util/APIUtils';
-import { ACCESS_TOKEN } from '../constants';
-import Alert from 'react-s-alert';
-import 'react-s-alert/dist/s-alert-default.css';
-import 'react-s-alert/dist/s-alert-css-effects/slide.css';
-import './App.css';
+/* DIAGNOSTIC CENTER COMPONENTS */
+
+
 
 
 class App extends Component {
@@ -115,8 +124,10 @@ class App extends Component {
                <Route path="/pharmaprofile" 
               render={(props) => <PharmaProfile authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route> 
             
-
-
+            {/* DOCTOR ROUTES*/}
+            <Route path="/docapp" 
+              render={(props) => <DocAppointment authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route> 
+            
 
 
             <Route path="/login"
