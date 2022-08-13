@@ -2,39 +2,16 @@
 import './appointment.css';
 /*import {myfunction } from './nav.js' */
 import React, { Component } from 'react';
-import { GOOGLE_AUTH_URL, FACEBOOK_AUTH_URL, GITHUB_AUTH_URL, ACCESS_TOKEN, API_BASE_URL } from '../../constants';
+import { GOOGLE_AUTH_URL, FACEBOOK_AUTH_URL, GITHUB_AUTH_URL, ACCESS_TOKEN } from '../../constants';
 import { login } from '../../util/APIUtils';
 import { Link, Redirect } from 'react-router-dom'
 import Alert from 'react-s-alert';
-import axios from 'axios';
+
+var appointments = [1, 2, 3, 4]
 
 class Appointment extends Component {
-    constructor(props){
-        super(props)
-    }
-
-    state={
-        appointments: []
-    }
-
-    handleCancel=(id)=>{
-        axios.delete(`http://localhost:8080/appointment/deleteAppointmentByAID/${id}`, {
-                        headers: {
-                            Authorization: `Bearer ${localStorage.getItem(ACCESS_TOKEN)}`,
-                        }}).then(res=>{
-                            window.location.reload(false);
-                        })
-    }
-
-    componentDidMount =()=>{
-        axios.get(`http://localhost:8080/appointment/getAppointmentsByHID/${this.props.currentUser.id}`, {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem(ACCESS_TOKEN)}`,
-            }
-        }).then(res => {
-            console.log(res);
-            this.setState({ appointments: res.data })
-        })
+    constructor(props) {
+        super(props);
     }
 
     render() {
@@ -63,7 +40,7 @@ class Appointment extends Component {
                             <li class="box"><a href="hhome">Home</a></li>
                             <li class="box"><a href="/appreq">Appointment Requests</a></li>
                             <li class="box"><a href="/app">Appointments</a></li>
-                            <li class="box"><a href="/profile">Profile</a></li>
+                            <li class="box"><a href="/hprofile">Profile</a></li>
                             <li><button className="logout-button"><a onClick={this.props.onLogout}>Logout</a></button></li>
                         </ul>
                         <div style={{ clear: 'both' }} />
@@ -84,19 +61,19 @@ class Appointment extends Component {
                     <div classN></div>
                     <h1>Appointments:</h1>
 
-                    {this.state.appointments.map(appointment => {
+                    {appointments.map(appointment => {
                         return (
                             <div className="profile-info">
 
                                 <div className="profile-name">
-                                    <p> Serial: &ensp; {appointment.aid}</p>
-                                    <p> Date: &ensp; {appointment.date}</p>
-                                    <p> PID: &emsp; {appointment.pid}</p>
-                                    <p> DID: &emsp; {appointment.did}</p>
+                                    <p> Serial: &ensp; {this.props.currentUser.serial}</p>
+                                    <p> Date: &ensp; {this.props.currentUser.date}</p>
+                                    <p> PID: &emsp; {this.props.currentUser.id}</p>
+                                    <p> DID: &emsp; {this.props.currentUser.id}</p>
                                 </div>
 
                                 <div className='btns'>
-                                    <div><button className="cancel-button"><a onClick={()=>this.handleCancel(appointment.aid)}>Cancel</a></button></div>
+                                    <div><button className="cancel-button"><a onClick={this.props.onLogout}>Cancel</a></button></div>
                                     <div><button className="assigned-button"><a>Assigned</a></button></div>
                                 </div>
                             </div>)

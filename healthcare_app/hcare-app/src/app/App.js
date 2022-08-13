@@ -37,6 +37,7 @@ import PharmaProfile from '../Pharmacy/PharmaProfile/PharmaProfile';
 /* DOCTOR COMPONENTS */
 import Profile from '../user/doctor/profile/Profile';
 import DocAppointment from '../Doctor/Appointments/DocAppointment';
+import FollowupPatients from '../Doctor/FollowupPatients/FollowupPatients';
 
 /* DIAGNOSTIC CENTER COMPONENTS */
 
@@ -112,7 +113,7 @@ class App extends Component {
               render={(props) => <AppointmentReq authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route>
             <Route path="/app" 
               render={(props) => <Appointment authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route>
-             <Route path="/avdoc:id" 
+             <Route path="/avdoc" 
               render={(props) => <AvailableDoctors authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route>
             
 
@@ -127,6 +128,8 @@ class App extends Component {
             {/* DOCTOR ROUTES*/}
             <Route path="/docapp" 
               render={(props) => <DocAppointment authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route> 
+            <Route path="/folpat" 
+              render={(props) => <FollowupPatients authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route> 
             
 
 

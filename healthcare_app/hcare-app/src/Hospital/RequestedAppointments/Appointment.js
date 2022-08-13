@@ -2,48 +2,16 @@
 import './appointment.css';
 /*import {myfunction } from './nav.js' */
 import React, { Component } from 'react';
-import { GOOGLE_AUTH_URL, FACEBOOK_AUTH_URL, GITHUB_AUTH_URL, ACCESS_TOKEN, API_BASE_URL } from '../../constants';
+import { GOOGLE_AUTH_URL, FACEBOOK_AUTH_URL, GITHUB_AUTH_URL, ACCESS_TOKEN } from '../../constants';
 import { login } from '../../util/APIUtils';
 import { Link, Redirect } from 'react-router-dom'
 import Alert from 'react-s-alert';
-import axios from 'axios';
-import AvailableDoctors from '../Doctors/availableDoctors';
 
-var index = 0;
-var PID = 0;
+var appointments = [1, 2, 3, 4]
 
 class AppointmentReq extends Component {
-    constructor(props){
-        super(props)
-
-        this.state = {
-            appointments: []
-        }
-    }
-
-    handleDefer = (e)=>{
-        e.hid++;
-        axios({
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem(ACCESS_TOKEN)}`,
-            },
-            method: 'put',
-            url: API_BASE_URL + '/appReqs/updateAppReq',
-            data: e
-          });
-
-        window.location.reload(false);
-    }
-
-    componentDidMount() {
-        axios.get(`http://localhost:8080/appReqs/getAppReqByHID/${this.props.currentUser.id}`, {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem(ACCESS_TOKEN)}`,
-            }
-        }).then(res => {
-            console.log(res);
-            this.setState({ appointments: res.data })
-        })
+    constructor(props) {
+        super(props);
     }
 
     render() {
@@ -72,7 +40,7 @@ class AppointmentReq extends Component {
                                 <li class="box"><a href="hhome">Home</a></li>
                                 <li class="box"><a href="/appreq">Appointment Requests</a></li>
                                 <li class="box"><a href="/app">Appointments</a></li>
-                                <li class="box"><a href="/profile">Profile</a></li>
+                                <li class="box"><a href="/hprofile">Profile</a></li>
                                 <li><button className="logout-button"><a onClick={this.props.onLogout}>Logout</a></button></li>
                             </ul>
                             <div style={{ clear: 'both' }} />
@@ -93,21 +61,20 @@ class AppointmentReq extends Component {
                     <div classN></div>
                     <h1>Appointment Requests:</h1>
 
-                        {this.state.appointments.map(appointment => 
+                        {appointments.map( appointment => 
                     {
                         return(
                             <div className="profile-info">
                                 
                                 <div className="profile-name">
-                                    <p> Appointment ID: &ensp; {appointment.id}</p>
-                                    <p> Date: &ensp; {appointment.date}</p>
-                                    <p> PID: &emsp; {appointment.pid}</p>
-                                    <p> Field:  &emsp; {appointment.field}</p>
+                                    <p> Date: &ensp; {this.props.currentUser.name}</p>
+                                    <p> PID: &emsp; {this.props.currentUser.id}</p>
+                                    <p> Field:  &emsp; {this.props.currentUser.address}</p>
                                 </div>
 
                                 <div className='btns'>
-                                    <div><Link to={`/appreq`}><button className="defer-button" type="button" onClick={()=>this.handleDefer(appointment)}><a>Defer</a></button></Link></div>
-                                    <div><Link to={`/avdoc/${appointment.id}`}><button className="assign-button">Assign</button></Link></div>
+                                    <div><button className="defer-button"><a onClick={this.props.onLogout}>Defer</a></button></div>
+                                    <div><button className="assign-button"><a onClick={this.props.onLogout}>Assign</a></button></div>
                                 </div>
                             </div>)
                     }) }
