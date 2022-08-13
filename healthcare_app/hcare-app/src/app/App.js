@@ -112,7 +112,7 @@ class App extends Component {
               render={(props) => <AppointmentReq authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route>
             <Route path="/app" 
               render={(props) => <Appointment authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route>
-             <Route path="/avdoc" 
+             <Route path="/avdoc:id" 
               render={(props) => <AvailableDoctors authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route>
             
 
