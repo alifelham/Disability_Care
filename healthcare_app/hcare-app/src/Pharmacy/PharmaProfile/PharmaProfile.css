@@ -1,51 +1,16 @@
 .profile-container {
     padding-top: 120px;
-    margin: auto;
     max-width: 700px;
-    padding-bottom: 20px;
-    min-height: 605px;
 
 }
-.profile-container :hover{
-  background-color: #ffdfa8;
-}
-.medlist{
-  display: inline;
-  width: 140%;
-  text-align: left;
-  padding-left: 20px;
-}
 
-.meds{
-  color: black;
-}
-
-.profile-container h1{
-    color: black;
-}
 .profile-info {
   box-shadow: 22px 25px rgb(154, 152, 152, 0.5);
   margin-top: 10px;
   background-color: #fcd89e;
   border-radius: 30px;
   box-sizing: border-box; 
-  margin-left: 40px;
-  margin-right: 40px;
-  margin-bottom: 40px;
   text-align: center;
-  display: flex;
-}
-
-.profile-name{
-    width: 60%;
-}
-
-.btns{
-    margin: auto;
-}
-
-.btns a{
-    color: #f2f5f7;
 }
 
 @media (max-width: 800px) {
@@ -54,12 +19,11 @@
   }
 }
 
-
-
-.profile-info .profile-avatar img {
-    border-radius: 50%;
-    max-width: 250px;
+.profile-container :hover{
+  background-color: #ffdfa8;
 }
+
+
 
 .profile-info .profile-name {
     font-weight: 500;
@@ -70,8 +34,11 @@
 .profile-name p{
   text-align: left;
   font-size: 17px;
+  width: 100%;
 }
-
+.profile-name {
+  width: 100%;
+}
 .profile-info h1{
   color: rgb(89, 89, 89);
   padding-bottom: 10px;
@@ -531,27 +498,3 @@ nav ul li a:hover{
   }
 }
 */
-
-
-
-.defer-button{
-    background-color:   #CD5C5C;
-    border: 1.5px solid  #CD5C5C;
-    border-radius: 2em;
-    padding: 0.6rem 0.8rem;
-    margin-left: 2vw;
-    font-size: 1rem;
-    cursor: pointer;
-
-}
-
-.assign-button{
-    background-color:   #60c81f;
-    border: 1.5px solid  #60c81f;
-    border-radius: 2em;
-    padding: 0.6rem 0.8rem;
-    margin-left: 2vw;
-    font-size: 1rem;
-    cursor: pointer;
-
-}
