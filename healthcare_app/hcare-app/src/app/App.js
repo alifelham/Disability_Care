@@ -18,6 +18,7 @@ import AvailableDoctors from '../Hospital/Doctors/availableDoctors';
 
 /* PHARMACY COMPONENTS */
 import MedRequest from '../Pharmacy/MedicineRequests/MedRequest';
+import MedDelivery from '../Pharmacy/MedicineDelivery/MedDelivery';
 
 
 
@@ -109,6 +110,8 @@ class App extends Component {
             {/* PHARMACY ROUTES*/}
             <Route path="/medreq" 
               render={(props) => <MedRequest authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route> 
+            <Route path="/meddelivery" 
+              render={(props) => <MedDelivery authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route> 
             
 
 

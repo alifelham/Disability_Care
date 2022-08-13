@@ -6,7 +6,19 @@
     min-height: 605px;
 
 }
+.profile-container :hover{
+  background-color: #ffdfa8;
+}
+.medlist{
+  display: inline;
+  width: 70%;
+  text-align: left;
+  padding-left: 20px;
+}
 
+.meds{
+  color: black;
+}
 
 .profile-container h1{
     color: black;
@@ -26,7 +38,7 @@
 }
 
 .profile-name{
-    width: 90%;
+    width: 40%;
 }
 
 .btns{
@@ -43,9 +55,7 @@
   }
 }
 
-.profile-container :hover{
-  background-color: #ffdfa8;
-}
+
 
 .profile-info .profile-avatar img {
     border-radius: 50%;
@@ -525,7 +535,7 @@ nav ul li a:hover{
 
 
 
-.cancel-button{
+.defer-button{
     background-color:   #CD5C5C;
     border: 1.5px solid  #CD5C5C;
     border-radius: 2em;
@@ -536,7 +546,7 @@ nav ul li a:hover{
 
 }
 
-.assigned-button{
+.assign-button{
     background-color:   #60c81f;
     border: 1.5px solid  #60c81f;
     border-radius: 2em;

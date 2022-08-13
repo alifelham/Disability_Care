@@ -6,10 +6,12 @@
     min-height: 605px;
 
 }
-
+.profile-container :hover{
+  background-color: #ffdfa8;
+}
 .medlist{
   display: inline;
-  width: 100%;
+  width: 80%;
   text-align: left;
   padding-left: 20px;
 }
@@ -22,14 +24,14 @@
     color: black;
 }
 .profile-info {
-  box-shadow: 10px 15px rgb(154, 152, 152);
+  box-shadow: 22px 25px rgb(154, 152, 152, 0.5);
   margin-top: 10px;
   background-color: #fcd89e;
   border-radius: 30px;
   padding: 30px;
   box-sizing: border-box; 
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 40px;
+  margin-right: 40px;
   margin-bottom: 40px;
   text-align: center;
   display: flex;
@@ -53,9 +55,7 @@
   }
 }
 
-.profile-container :hover{
-  background-color: #f9cc7f;
-}
+
 
 .profile-info .profile-avatar img {
     border-radius: 50%;
