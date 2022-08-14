@@ -22,6 +22,7 @@ import NotFound from '../common/NotFound';
 
 /* PATIENT COMPONENTS */
 import HomepagePatient from '../phome/HomepagePatient';
+import PatientProfile from '../Patient/Profile/PatientProfile';
 
 /* HOSPITAL COMPONENTS */
 import HospitalProfile from '../Hospital/Profile/HospitalProfile';
@@ -33,6 +34,8 @@ import AvailableDoctors from '../Hospital/Doctors/availableDoctors';
 import MedRequest from '../Pharmacy/MedicineRequests/MedRequest';
 import MedDelivery from '../Pharmacy/MedicineDelivery/MedDelivery';
 import PharmaProfile from '../Pharmacy/PharmaProfile/PharmaProfile';
+import MainPharmaMap from '../Pharmacy/MainPharmaMap/MainPharmaMap';
+
 
 /* DOCTOR COMPONENTS */
 import Profile from '../user/doctor/profile/Profile';
@@ -133,7 +136,9 @@ class App extends Component {
               render={(props) => <MedDelivery authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route> 
                <Route path="/pharmaprofile" 
               render={(props) => <PharmaProfile authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route> 
-            
+            < Route path="/map" component={MainPharmaMap}></Route>
+
+
             {/* DOCTOR ROUTES*/}
             <Route path="/docapp" 
               render={(props) => <DocAppointment authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route> 
