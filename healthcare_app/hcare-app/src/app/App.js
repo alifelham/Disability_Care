@@ -41,6 +41,7 @@ import FollowupPatients from '../Doctor/FollowupPatients/FollowupPatients';
 import TestReq from '../DiagnosticCenter/TestRequest/TestReq';
 import TestReport from '../DiagnosticCenter/TestReports/TestReport';
 import PatientAppointment from '../Patient/Appointments/PatientAppointment';
+import MedAssigned from '../Patient/Medicines/MedAssigned';
 
 /* DIAGNOSTIC CENTER COMPONENTS */
 
@@ -109,6 +110,8 @@ class App extends Component {
               render={(props) => <Profile authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route>
             <Route path="/appsch" 
               render={(props) => <PatientAppointment authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route>
+            <Route path="/pmeds" 
+              render={(props) => <MedAssigned authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route>
             
 
             {/* HOSPITAL ROUTES*/}

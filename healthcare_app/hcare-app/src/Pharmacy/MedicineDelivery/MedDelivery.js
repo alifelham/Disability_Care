@@ -79,6 +79,9 @@ class MedDelivery extends Component {
                                     <p> DID: &emsp; {this.props.currentUser.id}</p>
                                     <p> Delivery Address: &emsp; {this.props.currentUser.id}</p>
                                     <p> Order Date: &emsp; {this.props.currentUser.id}</p>
+                                    <p> Location: &emsp; {this.props.currentUser.location}</p>
+                                    <p> Distance: &emsp; {this.props.currentUser.dist}</p>
+
                                     <p className="assigned-button"> Delivery Date: &emsp; {this.props.currentUser.id}</p>
                                 </div>
 

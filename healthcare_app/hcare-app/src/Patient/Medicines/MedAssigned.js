@@ -1,5 +1,5 @@
 /*import React from 'react'; */
-import './MedRequest.css';
+import './MedAssigned.css';
 /*import {myfunction } from './nav.js' */
 import React, { Component } from 'react';
 import { GOOGLE_AUTH_URL, FACEBOOK_AUTH_URL, GITHUB_AUTH_URL, ACCESS_TOKEN } from '../../constants';
@@ -9,7 +9,7 @@ import Alert from 'react-s-alert';
 
 var appointments = [1, 2, 3, 4]
 
-class MedRequest extends Component {
+class MedAssigned extends Component {
     constructor(props) {
         super(props);
     }
@@ -34,32 +34,41 @@ class MedRequest extends Component {
 
 
                 <nav className="navb">
-                    <h6 className="brand"><a href="#"><img src="https://i.postimg.cc/Y2RVP2ch/logo.png" /></a></h6>
-                    <div className="main_list" id="mainListDiv">
-                        <ul>
-                            <li class="box"><a href="/pharmahome">Home</a></li>
-                            <li class="box"><a href="/medreq">Requests</a></li>
-                            <li class="box"><a href="/meddelivery">Deliveries</a></li>
-                            <li class="box"><a href="/pharmaprofile">Profile</a></li>
-                            <li><button className="logout-button"><a onClick={this.props.onLogout}>Logout</a></button></li>
-                        </ul>
-                        <div style={{ clear: 'both' }} />
-                    </div>
+                        <h6 className="brand"><a href="#"><img src="https://i.postimg.cc/Y2RVP2ch/logo.png" /></a></h6>
+                        <div className="main_list" id="mainListDiv">
+                            <ul>
+                                <li class="box"><a href="/phome">Home</a></li>
+                                <li class="box"><a href="/pmeds">Medicine</a></li>
+                                <li class="box"><a href="/ptests">Tests</a></li>
+                                <div className="dropdown">
+                                    <button className="dropbtn"><a href="#">Appointments</a></button>
+                                    <div className="dropdown-content">
+                                        <a href="/bookapp">Book </a>
+                                        <a href="/appsch">Scheduled</a>
+                                    </div>
+                                </div>
 
-                    <div className="media_button">
-                        <button className="main_media_button" id="mediaButton">
-                            <span />
-                            <span />
-                            <span />
-                        </button>
-                    </div>
+                                <li class="box"><a href="/pprofile">Profile</a></li>
+                                {/* <li><button className="logout-button"><a href="#">Logout</a></button></li> */}
+                                <li><button className="logout-button"><a onClick={this.props.onLogout}>Logout</a></button></li>
+                            </ul>
+                            <div style={{ clear: 'both' }} />
+                        </div>
 
-                </nav>
+                        <div className="media_button">
+                            <button className="main_media_button" id="mediaButton">
+                                <span />
+                                <span />
+                                <span />
+                            </button>
+                        </div>
+
+                    </nav>
 
 
                 <div className="profile-container">
                     <div classN></div>
-                    <h1>Medicine Requests:</h1>
+                    <h1>Medicine Prescribed:</h1>
 
                     {appointments.map(appointment => {
                         return (
@@ -74,16 +83,12 @@ class MedRequest extends Component {
                                  )})}
                                  </div>
                                 <div className="profile-name">
-                                    <p> Order: &emsp; #{this.props.currentUser.id}</p>
-                                    <p> PID: &emsp; {this.props.currentUser.id}</p>
-                                    <p> DID: &emsp; {this.props.currentUser.id}</p>
+                                    <p> Doctor: &emsp; {this.props.currentUser.id}</p>
                                     <p> Date: &emsp; {this.props.currentUser.id}</p>
-                                    <p> Location: &emsp; {this.props.currentUser.location}</p>
-                                    <p> Distance: &emsp; {this.props.currentUser.dist}</p>
+                                    <p> Appointment: &emsp; {this.props.currentUser.date}</p>
 
                                     <div className='btns'>
-                                    <div><button className="cancel-button"><a onClick={this.props.onLogout}>Defer</a></button></div>
-                                    <div><button className="assigned-button"><a onClick={this.props.onLogout}>Deliver</a></button></div>
+                                    <div><button className="assigned-button"><a onClick={this.props.onLogout}>Request Delivery</a></button></div>
                                 </div>
                                 </div>
 
@@ -101,6 +106,6 @@ class MedRequest extends Component {
         }
 }
 
-export default MedRequest;
+export default MedAssigned;
 
 
