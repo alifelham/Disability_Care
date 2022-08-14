@@ -6,12 +6,28 @@ import { GOOGLE_AUTH_URL, FACEBOOK_AUTH_URL, GITHUB_AUTH_URL, ACCESS_TOKEN } fro
 import { login } from '../../util/APIUtils';
 import { Link, Redirect } from 'react-router-dom'
 import Alert from 'react-s-alert';
+import axios from 'axios';
 
-var appointments = [1, 2, 3, 4]
+var idx1 = 1, idx2 = 1;
 
 class MedDelivery extends Component {
     constructor(props) {
         super(props);
+    }
+
+    state = {
+        meddel: []
+    }
+
+    componentDidMount = () => {
+        axios.get(`http://localhost:8080/medReqs/getMedReqByPHID/${this.props.currentUser.id}`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem(ACCESS_TOKEN)}`,
+            }
+        }).then(res => {
+            console.log(res.data);
+            this.setState({ meddel: res.data })
+        })  
     }
 
     render() {
@@ -61,42 +77,49 @@ class MedDelivery extends Component {
                     <div classN></div>
                     <h1>Medicine Deliveries:</h1>
 
-                    {appointments.map(appointment => {
+                    {this.state.meddel.map(medreq => {
+                        if(medreq.delivery === null){
+                            return;
+                        }
+                        idx1 = 1;
+                        idx2 = 1;
                         return (
                             <div className="profile-info">
                                 <div className='medlist'>
-                                {appointments.map(app => {
-                                 return (
                                     <div className="meds">
-                                    <p> Med: &ensp; {this.props.currentUser.serial}</p>
-                                    <p> Dose: &ensp; {this.props.currentUser.date}</p>
+                                        {medreq.meds.map(meds => {
+                                            return (
+                                                <p> Med {idx1++}: &ensp; {meds}</p>
+                                            )
+                                        })}
+                                        {medreq.dose.map(dose => {
+                                            return (
+                                                <p> Dose {idx2++}: &ensp; {dose}</p>
+                                            )
+                                        })}
+                                    </div>
                                 </div>
-                                 )})}
-                                 </div>
                                 <div className="profile-name">
-                                    <p> Order: &emsp; #{this.props.currentUser.id}</p>
-                                    <p> PID: &emsp; {this.props.currentUser.id}</p>
-                                    <p> DID: &emsp; {this.props.currentUser.id}</p>
-                                    <p> Delivery Address: &emsp; {this.props.currentUser.id}</p>
-                                    <p> Order Date: &emsp; {this.props.currentUser.id}</p>
-                                    <p> Location: &emsp; {this.props.currentUser.location}</p>
-                                    <p> Distance: &emsp; {this.props.currentUser.dist}</p>
-
-                                    <p className="assigned-button"> Delivery Date: &emsp; {this.props.currentUser.id}</p>
+                                    <p> Order: &emsp; #{medreq.rid}</p>
+                                    <p> PID: &emsp; {medreq.pid}</p>
+                                    <p> DID: &emsp; {medreq.did}</p>
+                                    <p> Delivery Address: &emsp; {this.props.currentUser.location}</p>
+                                    <p> Order Date: &emsp; {medreq.date}</p>
+                                    <p className="assigned-button"> Delivery Date: &emsp; {medreq.delivery}</p>
                                 </div>
 
-       
-                                
+
+
                             </div>)
-                    }) }
-                    </div>
-            
-
-
+                    })}
                 </div>
-             
+
+
+
+            </div>
+
         )
-        }
+    }
 }
 
 export default MedDelivery;
