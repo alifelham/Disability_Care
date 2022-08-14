@@ -7,11 +7,29 @@ import { login } from '../../util/APIUtils';
 import { Link, Redirect } from 'react-router-dom'
 import Alert from 'react-s-alert';
 
-var appointments = [1, 2, 3, 4]
+import axios from 'axios';
+
+var idx1 = 1;
+var idx2 = 1;
 
 class TestReport extends Component {
     constructor(props) {
         super(props);
+    }
+
+    state = {
+        medreqs: []
+    }
+
+    componentDidMount = () => {
+        axios.get(`http://localhost:8080/testReqs/getTestReqByDiagID/${this.props.currentUser.id}`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem(ACCESS_TOKEN)}`,
+            }
+        }).then(res => {
+            console.log(res);
+            this.setState({ medreqs: res.data })
+        })
     }
 
     render() {
@@ -69,34 +87,40 @@ class TestReport extends Component {
                         </div>
                     </div>
 
-                    {appointments.map(appointment => {
+                    {this.state.medreqs.map(medreq => {
+                        if(medreq.delivery === null){
+                            return;
+                        }
+                        idx1 = 1;
+                        idx2 = 1;
                         return (
                             <div className="profile-info">
                                 <div className='medlist'>
-                                {appointments.map(app => {
-                                 return (
                                     <div className="meds">
-                                    <p> Test: &ensp; {this.props.currentUser.serial}</p>
-                                    <p> Instruction: &ensp; {this.props.currentUser.date}</p>
+                                        {medreq.test.map(meds => {
+                                            return (
+                                                <p> Test {idx1++}: &ensp; {meds}</p>
+                                            )
+                                        })}
+                                        {medreq.instruction.map(dose => {
+                                            return (
+                                                <p> Instruction {idx2++}: &ensp; {dose}</p>
+                                            )
+                                        })}
+                                    </div>
                                 </div>
-                                 )})}
-                                 </div>
                                 <div className="profile-name">
-                                    <p> Serial: &emsp; #{this.props.currentUser.id}</p>
-                                    <p> PID: &emsp; {this.props.currentUser.id}</p>
-                                    <p> DID: &emsp; {this.props.currentUser.id}</p>
-                                    <p> Date: &emsp; {this.props.currentUser.id}</p>
-                                    <p> Time: &emsp; {this.props.currentUser.id}</p>
+                                    <p> Test ID: &emsp; #{medreq.tid}</p>
+                                    <p> PID: &emsp; {medreq.pid}</p>
+                                    <p> DID: &emsp; {medreq.did}</p>
+                                    <p> Date: &emsp; {medreq.date}</p>
 
                                     <div className='btns'>
-                                    <div><button className="assigned-button"><a onClick={this.props.onLogout}>Upload Report</a></button></div>
+                                        <div><Link to={`/test`}><button type ="button" className="assigned-button" onClick={() => this.handleUpload(medreq)}>Delivered On: {medreq.delivery}</button></Link></div>
+                                    </div>
                                 </div>
-                                </div>
-
-                                
-                                
                             </div>)
-                    }) }
+                    })}
                     </div>
             
 
