@@ -41,37 +41,38 @@ class HomepagePatient extends Component {
             <div class="line2"></div>
             <div class="line3"></div>
     </div> */}
-          <nav className="navb">
-            <h6 className="brand"><a href="#"><img src="https://i.postimg.cc/Y2RVP2ch/logo.png" /></a></h6>
-            <div className="main_list" id="mainListDiv">
-              <ul>
-                <li class="box"><a href="phome">Home</a></li>
-                <li class="box"><a href="#">Medicine</a></li>
-                <li class="box"><a href="#">Tests</a></li>
-                <div className="dropdown">
-                  <button className="dropbtn"><a href="#">Appointments</a></button>
-                  <div className="dropdown-content">
-                    <a href="#">Book </a>
-                    <a href="#">Scheduled</a>
-                  </div>
-                </div>
+                <nav className="navb">
+                        <h6 className="brand"><a href="#"><img src="https://i.postimg.cc/Y2RVP2ch/logo.png" /></a></h6>
+                        <div className="main_list" id="mainListDiv">
+                            <ul>
+                                <li class="box"><a href="/phome">Home</a></li>
+                                <li class="box"><a href="/pmeds">Medicine</a></li>
+                                <li class="box"><a href="/ptests">Tests</a></li>
+                                <div className="dropdown">
+                                    <button className="dropbtn"><a href="#">Appointments</a></button>
+                                    <div className="dropdown-content">
+                                        <a href="/bookapp">Book </a>
+                                        <a href="/appsch">Scheduled</a>
+                                    </div>
+                                </div>
 
-                <li class="box"><a href="/profile">Profile</a></li>
-                {/* <li><button className="logout-button"><a href="#">Logout</a></button></li> */}
-                <li><button className="logout-button"><a onClick={this.props.onLogout}>Logout</a></button></li>
-              </ul>
-              <div style={{ clear: 'both' }} />
-            </div>
+                                <li class="box"><a href="/pprofile">Profile</a></li>
+                                {/* <li><button className="logout-button"><a href="#">Logout</a></button></li> */}
+                                <li><button className="logout-button"><a onClick={this.props.onLogout}>Logout</a></button></li>
+                            </ul>
+                            <div style={{ clear: 'both' }} />
+                        </div>
 
-            <div className="media_button">
-              <button className="main_media_button" id="mediaButton">
-                <span />
-                <span />
-                <span />
-              </button>
-            </div>
-  
-          </nav>
+                        <div className="media_button">
+                            <button className="main_media_button" id="mediaButton">
+                                <span />
+                                <span />
+                                <span />
+                            </button>
+                        </div>
+
+                    </nav>
+
           <div className="content">
             <div className="content-inner">
               <button className="voice"><a href='#'><img src="https://i.postimg.cc/44pLCJrz/voice.png" /></a></button>
