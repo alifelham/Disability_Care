@@ -39,6 +39,7 @@ import Profile from '../user/doctor/profile/Profile';
 import DocAppointment from '../Doctor/Appointments/DocAppointment';
 import FollowupPatients from '../Doctor/FollowupPatients/FollowupPatients';
 import TestReq from '../DiagnosticCenter/TestRequest/TestReq';
+import TestReport from '../DiagnosticCenter/TestReports/TestReport';
 
 /* DIAGNOSTIC CENTER COMPONENTS */
 
@@ -135,6 +136,8 @@ class App extends Component {
             {/* DIAGNOSTIC CENTER ROUTES*/}
             <Route path="/testreq" 
               render={(props) => <TestReq authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route> 
+            <Route path="/test" 
+              render={(props) => <TestReport authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route> 
             
 
             <Route path="/login"

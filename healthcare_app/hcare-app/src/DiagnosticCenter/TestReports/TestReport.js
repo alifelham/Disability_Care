@@ -1,5 +1,5 @@
 /*import React from 'react'; */
-import './TestReq.css';
+import './TestReport.css';
 /*import {myfunction } from './nav.js' */
 import React, { Component } from 'react';
 import { GOOGLE_AUTH_URL, FACEBOOK_AUTH_URL, GITHUB_AUTH_URL, ACCESS_TOKEN } from '../../constants';
@@ -9,7 +9,7 @@ import Alert from 'react-s-alert';
 
 var appointments = [1, 2, 3, 4]
 
-class TestReq extends Component {
+class TestReport extends Component {
     constructor(props) {
         super(props);
     }
@@ -57,9 +57,17 @@ class TestReq extends Component {
                     </nav>
       
                     
-                    <div className="profile-container">
-                    <div classN></div>
-                    <h1>Test Requests:</h1>
+                    <div className="prof-container">
+                    <div className='FP'>
+                        <div className='FPh1'><h1>Test Reports:</h1></div>
+                        <div className="filter">
+                            <button className="f-dropbtn">🔽 Filter</button>
+                            <div className="dropdown-content">
+                                <a href="#">Reports Uploaded</a>
+                                <a href="#">Reports Pending</a>
+                            </div>
+                        </div>
+                    </div>
 
                     {appointments.map(appointment => {
                         return (
@@ -81,8 +89,7 @@ class TestReq extends Component {
                                     <p> Time: &emsp; {this.props.currentUser.id}</p>
 
                                     <div className='btns'>
-                                    <div><button className="cancel-button"><a onClick={this.props.onLogout}>Defer</a></button></div>
-                                    <div><button className="assigned-button"><a onClick={this.props.onLogout}>Deliver</a></button></div>
+                                    <div><button className="assigned-button"><a onClick={this.props.onLogout}>Upload Report</a></button></div>
                                 </div>
                                 </div>
 
@@ -100,6 +107,6 @@ class TestReq extends Component {
         }
 }
 
-export default TestReq;
+export default TestReport;
 
 
