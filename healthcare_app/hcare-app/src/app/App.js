@@ -42,6 +42,7 @@ import TestReq from '../DiagnosticCenter/TestRequest/TestReq';
 import TestReport from '../DiagnosticCenter/TestReports/TestReport';
 import PatientAppointment from '../Patient/Appointments/PatientAppointment';
 import MedAssigned from '../Patient/Medicines/MedAssigned';
+import DigitalPrescription from '../Doctor/Digital Prescription/DigitalPrescription';
 
 /* DIAGNOSTIC CENTER COMPONENTS */
 
@@ -138,7 +139,10 @@ class App extends Component {
               render={(props) => <DocAppointment authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route> 
             <Route path="/folpat" 
               render={(props) => <FollowupPatients authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route> 
+             <Route path="/prescription" 
+              render={(props) => <DigitalPrescription authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route> 
             
+
             {/* DIAGNOSTIC CENTER ROUTES*/}
             <Route path="/testreq" 
               render={(props) => <TestReq authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route> 
