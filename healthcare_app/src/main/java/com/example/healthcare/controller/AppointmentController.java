@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 @RestController
-@RequestMapping("/appointment")
+@RequestMapping("appointment/")
 public class AppointmentController {
     @Autowired
     private AppointmentService appointmentService;
@@ -24,6 +24,11 @@ public class AppointmentController {
     @GetMapping("/getAppointmentsByHID/{HID}")
     public List<Appointments> getAppointmentsByHID(@PathVariable Long HID) throws ExecutionException, InterruptedException{
         return appointmentService.getFutureAppointmentsByHID(HID);
+    }
+
+    @GetMapping("/getAppointmentsByDID/{DID}")
+    public List<Appointments> getAppointmentsByDID(@PathVariable Long DID) throws ExecutionException, InterruptedException{
+        return appointmentService.getFutureAppointmentsByDID(DID);
     }
 
     @DeleteMapping("/deleteAppointmentByAID/{AID}")

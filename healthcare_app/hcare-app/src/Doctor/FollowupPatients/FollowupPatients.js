@@ -6,12 +6,40 @@ import { GOOGLE_AUTH_URL, FACEBOOK_AUTH_URL, GITHUB_AUTH_URL, ACCESS_TOKEN } fro
 import { login } from '../../util/APIUtils';
 import { Link, Redirect } from 'react-router-dom'
 import Alert from 'react-s-alert';
-
-var appointments = [1, 2]
+import axios from 'axios';
 
 class FollowupPatients extends Component {
     constructor(props) {
         super(props);
+    }
+
+    state={
+        appointments: [],
+        patients: []
+    }
+
+    handleCancel=(FID)=>{
+        axios.delete(`http://localhost:8080/followUps/deleteFollowUp/${FID}`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem(ACCESS_TOKEN)}`,
+            }
+        }).then(res => {
+            console.log(res);
+            window.location.reload(false);
+        })
+
+
+    }
+
+    componentDidMount=()=>{
+        axios.get(`http://localhost:8080/followUps/getFollowUpsByDID/${this.props.currentUser.id}`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem(ACCESS_TOKEN)}`,
+            }
+        }).then(res => {
+            console.log(res);
+            this.setState({ appointments: res.data })
+        })
     }
 
     render() {
@@ -22,6 +50,7 @@ class FollowupPatients extends Component {
                     state: { from: this.props.location }
                 }} />;
         }
+
         return (
             <div className='bg'>
                 <meta charSet="UTF-8" />
@@ -68,33 +97,19 @@ class FollowupPatients extends Component {
                         </div>
                     </div>
 
-                    {appointments.map(appointment => {
+                    {this.state.appointments.map(appointment => {
                         return (
                             <div className="profile-info">
 
                                 <div className="profile-name">
-                                    <p> Name: &emsp; {this.props.currentUser.name}</p>
-                                    <p> PID: {this.props.currentUser.id}</p>
-                                    <p> Last Appointment: &ensp; {this.props.currentUser.date}</p>
-                                    <p> Next Appointment: &ensp; {this.props.currentUser.date}</p>
-                                    <p> Time: &ensp; {this.props.currentUser.time}</p>
-                                    <p>------------------------------------------</p>
-                                    <p> Report Requested: </p>
-                                    {appointments.map(app => {
-                                        return (
-                                            <div className="meds">
-                                                <p> r: &ensp; {this.props.currentUser.serial}
-                                                 {/* If status yes: */}
-                                                 <button className="available-button"><a>✔</a></button></p>
-                                            </div>
-                                        )
-                                    })}
-                                    <p>------------------------------------------</p>
-                                    <p> Medicines Given: &emsp; {this.props.currentUser.name}</p>
+                                    <p> Patient ID: &emsp; {appointment.pid}</p>
+                                    <p> Date & Time: {appointment.date}</p>
+                                    <p><a href={appointment.link} target="_blank"> Join Appointment</a></p>
+                                    
                                 </div>
 
                                 <div className='btns'>
-                                    <div><button className="cancel-button"><a onClick={this.props.onLogout}>Cancel</a></button></div>
+                                    <div><Link to = '/folpat'><button className="cancel-button" onClick={()=>this.handleCancel(appointment.fid)}><a>Cancel</a></button></Link></div>
                                     <div><button className="assigned-button"><a>Mail ✉️</a></button></div>
                                 </div>
                             </div>)

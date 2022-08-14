@@ -57,7 +57,31 @@ public class AppointmentService {
             DocumentSnapshot documentSnapshot = future.get();
 
             appointments = documentSnapshot.toObject(Appointments.class);
-            AppointmentList.add(appointments);
+            if(HID == appointments.getHID())AppointmentList.add(appointments);
+        }
+
+        return AppointmentList;
+    }
+
+    public List<Appointments> getFutureAppointmentsByDID(Long DID) throws ExecutionException, InterruptedException {
+
+        Firestore dbFirestore = FirestoreClient.getFirestore();
+
+        Iterable<DocumentReference>documentReferences = dbFirestore.collection("Appointments").listDocuments();
+        Iterator<DocumentReference> iterator = documentReferences.iterator();
+
+        List<Appointments> AppointmentList = new ArrayList<>();
+        Appointments appointments = null;
+
+        while(iterator.hasNext())
+        {
+            DocumentReference documentReference = iterator.next();
+            ApiFuture<DocumentSnapshot> future = documentReference.get();
+
+            DocumentSnapshot documentSnapshot = future.get();
+
+            appointments = documentSnapshot.toObject(Appointments.class);
+            if(DID == appointments.getDID())AppointmentList.add(appointments);
         }
 
         return AppointmentList;

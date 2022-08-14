@@ -2,16 +2,39 @@
 import './DocAppointment.css';
 /*import {myfunction } from './nav.js' */
 import React, { Component } from 'react';
-import { GOOGLE_AUTH_URL, FACEBOOK_AUTH_URL, GITHUB_AUTH_URL, ACCESS_TOKEN } from '../../constants';
+import { GOOGLE_AUTH_URL, FACEBOOK_AUTH_URL, GITHUB_AUTH_URL, ACCESS_TOKEN, API_BASE_URL } from '../../constants';
 import { login } from '../../util/APIUtils';
 import { Link, Redirect } from 'react-router-dom'
 import Alert from 'react-s-alert';
+import axios from 'axios';
 
-var appointments = [1, 2, 3, 4]
+class Appointment extends Component {
+    constructor(props){
+        super(props)
+    }
 
-class DocAppointment extends Component {
-    constructor(props) {
-        super(props);
+    state={
+        appointments: []
+    }
+
+    handleCancel=(id)=>{
+        axios.delete(`http://localhost:8080/appointment/deleteAppointmentByAID/${id}`, {
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem(ACCESS_TOKEN)}`,
+                        }}).then(res=>{
+                            window.location.reload(false);
+                        })
+    }
+
+    componentDidMount =()=>{
+        axios.get(`http://localhost:8080/appointment/getAppointmentsByDID/${this.props.currentUser.id}`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem(ACCESS_TOKEN)}`,
+            }
+        }).then(res => {
+            console.log(res);
+            this.setState({ appointments: res.data })
+        })
     }
 
     render() {
@@ -37,10 +60,10 @@ class DocAppointment extends Component {
                     <h6 className="brand"><a href="#"><img src="https://i.postimg.cc/Y2RVP2ch/logo.png" /></a></h6>
                     <div className="main_list" id="mainListDiv">
                         <ul>
-                            <li class="box"><a href="/dochome">Home</a></li>
-                            <li class="box"><a href="/docapp">Appointments</a></li>
-                            <li class="box"><a href="/folpat">Followup Patients</a></li>
-                            <li class="box"><a href="/docprofile">Profile</a></li>
+                            <li class="box"><a href="hhome">Home</a></li>
+                            <li class="box"><a href="/appreq">Appointment Requests</a></li>
+                            <li class="box"><a href="/app">Appointments</a></li>
+                            <li class="box"><a href="/profile">Profile</a></li>
                             <li><button className="logout-button"><a onClick={this.props.onLogout}>Logout</a></button></li>
                         </ul>
                         <div style={{ clear: 'both' }} />
@@ -61,21 +84,20 @@ class DocAppointment extends Component {
                     <div classN></div>
                     <h1>Appointments:</h1>
 
-                    {appointments.map(appointment => {
+                    {this.state.appointments.map(appointment => {
                         return (
                             <div className="profile-info">
 
                                 <div className="profile-name">
-                                    <p> Serial: &ensp; {this.props.currentUser.serial}</p>
-                                    <p> Date: &ensp; {this.props.currentUser.date}</p>
-                                    <p> Time: &ensp; {this.props.currentUser.time}</p>
-                                    <p> PID: &emsp; {this.props.currentUser.id}</p>
-                                    <p> Name: &emsp; {this.props.currentUser.name}</p>
+                                    <p> Serial: &ensp; {appointment.aid}</p>
+                                    <p> Date: &ensp; {appointment.date}</p>
+                                    <p> Time: &ensp; {appointment.date}</p>
+                                    <p> PID: &emsp; {appointment.pid}</p>
                                 </div>
 
                                 <div className='btns'>
-                                    <div><button className="cancel-button"><a onClick={this.props.onLogout}>Cancel</a></button></div>
-                                    <div><button className="assigned-button"><a>Go</a></button></div>
+                                    <div><button className="cancel-button"><a onClick={()=>this.handleCancel(appointment.aid)}>Cancel</a></button></div>
+                                    <div><button className="assigned-button"><a>Assigned</a></button></div>
                                 </div>
                             </div>)
                     }) }
@@ -89,6 +111,6 @@ class DocAppointment extends Component {
         }
 }
 
-export default DocAppointment;
+export default Appointment;
 
 

@@ -107,15 +107,10 @@ class MedDelivery extends Component {
                                     <p> Order Date: &emsp; {medreq.date}</p>
                                     <p className="assigned-button"> Delivery Date: &emsp; {medreq.delivery}</p>
                                 </div>
-
-
-
-                            </div>)
+                            </div>
+                            )
                     })}
                 </div>
-
-
-
             </div>
 
         )
