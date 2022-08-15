@@ -35,7 +35,7 @@ class HospitalProfile extends Component {
                         <h6 className="brand"><a href="#"><img src="https://i.postimg.cc/Y2RVP2ch/logo.png" /></a></h6>
                         <div className="main_list" id="mainListDiv">
                         <ul>
-                            <li class="box"><a href="hhome">Home</a></li>
+                            <li class="box"><a href="/dochome">Home</a></li>
                             <li class="box"><a href="/appreq">Appointment Requests</a></li>
                             <li class="box"><a href="/app">Appointments</a></li>
                             <li class="box"><a href="/hprofile">Profile</a></li>
@@ -61,8 +61,9 @@ class HospitalProfile extends Component {
                                            
                                 <div className="profile-name">
                                     <p> Hospital: &ensp; {this.props.currentUser.name}</p>
-                                    <p > Email: &emsp; &emsp; &ensp; {this.props.currentUser.email}</p>
                                     <p> ID: &emsp; {this.props.currentUser.id}</p>
+                                    <p > Email: &emsp; &emsp; &ensp; {this.props.currentUser.email}</p>
+                                    <p> Contact:  &emsp; {this.props.currentUser.contact}</p>
                                     <p> Address:  &emsp; {this.props.currentUser.address}</p>
                                 </div>
                             </div>

@@ -13,6 +13,11 @@ var idx2 = 1;
 
 class MedRequest extends Component {
     constructor(props) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            console.log("Latitude is :", position.coords.latitude);
+            console.log("Longitude is :", position.coords.longitude);
+            
+            this.props.lat = position.coords.latitude;});
         super(props);
     }
 

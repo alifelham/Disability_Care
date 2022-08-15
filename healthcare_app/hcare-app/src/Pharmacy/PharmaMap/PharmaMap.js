@@ -8,7 +8,7 @@ import {
 } from "@react-google-maps/api";
 import React from 'react';
 import './PharmaMap.css'
-
+const google = window.google
 
   
 
@@ -31,7 +31,6 @@ export default function MainPharmaMap() {
   const onLoad = useCallback((map) => (GoogleMap.currrent = map), []);
   
       const fetchDirections = (center, target) => {
-        if (!office) return;
     
         const service = new google.maps.DirectionsService();
         service.route(

@@ -61,8 +61,9 @@ class Profile extends Component {
                  
                                 <div className="profile-name">
                                     <p> Pharmacy: &ensp; {this.props.currentUser.name}</p>
+                                    <p> ID: &emsp; {this.props.currentUser.id}</p>
                                     <p > Email: &emsp; &emsp; &ensp; {this.props.currentUser.email}</p>
-                                    <p> PHID: &emsp; {this.props.currentUser.id}</p>
+                                    <p> Contact:  &emsp; {this.props.currentUser.contact}</p>
                                     <p> Address:  &emsp; {this.props.currentUser.address}</p>
                                 </div>
                             </div>

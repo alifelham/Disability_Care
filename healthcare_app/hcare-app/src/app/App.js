@@ -22,7 +22,6 @@ import NotFound from '../common/NotFound';
 
 /* PATIENT COMPONENTS */
 import HomepagePatient from '../phome/HomepagePatient';
-import PatientProfile from '../Patient/Profile/PatientProfile';
 
 /* HOSPITAL COMPONENTS */
 import HospitalProfile from '../Hospital/Profile/HospitalProfile';
@@ -46,6 +45,9 @@ import TestReport from '../DiagnosticCenter/TestReports/TestReport';
 import PatientAppointment from '../Patient/Appointments/PatientAppointment';
 import MedAssigned from '../Patient/Medicines/MedAssigned';
 import DigitalPrescription from '../Doctor/Digital Prescription/DigitalPrescription';
+import DiagProfile from '../DiagnosticCenter/Profile/DiagProfile';
+import HomepagePharma from '../Pharmacy/PharmaHome/HomepagePharma';
+import HomepageDoctor from '../Doctor/Home/HomepageDoctor';
 
 /* DIAGNOSTIC CENTER COMPONENTS */
 
@@ -137,7 +139,9 @@ class App extends Component {
                <Route path="/pharmaprofile" 
               render={(props) => <PharmaProfile authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route> 
             < Route path="/map" component={MainPharmaMap}></Route>
-
+            <Route path="/pharmahome" 
+              render={(props) => <HomepagePharma authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route> 
+               
 
             {/* DOCTOR ROUTES*/}
             <Route path="/docapp" 
@@ -146,6 +150,8 @@ class App extends Component {
               render={(props) => <FollowupPatients authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route> 
              <Route path="/prescription" 
               render={(props) => <DigitalPrescription authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route> 
+            <Route path="/dochome" 
+              render={(props) => <HomepageDoctor authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route> 
             
 
             {/* DIAGNOSTIC CENTER ROUTES*/}
@@ -153,6 +159,8 @@ class App extends Component {
               render={(props) => <TestReq authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route> 
             <Route path="/test" 
               render={(props) => <TestReport authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route> 
+            <Route path="/dprofile" 
+              render={(props) => <DiagProfile authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route> 
             
 
             <Route path="/login"
