@@ -2,7 +2,7 @@
   "name": "react-social",
   "version": "0.1.0",
   "engines": {
-    "npm": "8.11.0"
+    "node": "16.15.1"
   },
   "private": true,
   "proxy": "http://localhost:8080",
