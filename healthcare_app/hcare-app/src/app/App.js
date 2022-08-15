@@ -23,6 +23,7 @@ import HomepagePatient from '../phome/HomepagePatient';
 import PatientProfile from '../user/patient/profile/PatientProfile';
 import PatientAppointment from '../Patient/Appointments/PatientAppointment';
 import MedAssigned from '../Patient/Medicines/MedAssigned';
+import PatientTestReport from '../Patient/Tests/TestReport';
 
 /* HOSPITAL COMPONENTS */
 import HospitalProfile from '../Hospital/Profile/HospitalProfile';
@@ -121,7 +122,7 @@ class App extends Component {
             <Route path="/phome"
               render={(props) => <HomepagePatient authenticated={this.state.authenticated} onLogout = {this.handleLogout} {...props} />}></Route>
             <Route path="/ptest" 
-              render={(props) => <TestReport authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route> 
+              render={(props) => <PatientTestReport authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route> 
 
             {/* HOSPITAL ROUTES*/}
             <Route path="/hprofile" 
