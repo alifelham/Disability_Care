@@ -114,9 +114,8 @@ class MedRequest extends Component {
 
 
                 <nav className="navb">
-                    <div className="main_list" id="mainListDiv">
                     <h6 className="brand"><a href="#"><img src="https://i.postimg.cc/Y2RVP2ch/logo.png" /></a></h6>
-
+                    <div className="main_list" id="mainListDiv">
                         <ul>
                             <li class="box"><a href="/pharmahome">Home</a></li>
                             <li class="box"><a href="/medreq">Requests</a></li>

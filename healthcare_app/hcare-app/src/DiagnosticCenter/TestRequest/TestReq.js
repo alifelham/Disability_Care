@@ -92,27 +92,27 @@ class TestRequest extends Component {
 
 
                 <nav className="navb">
-                    <h6 className="brand"><a href="#"><img src="https://i.postimg.cc/Y2RVP2ch/logo.png" /></a></h6>
-                    <div className="main_list" id="mainListDiv">
-                        <ul>
-                            <li class="box"><a href="/pharmahome">Home</a></li>
-                            <li class="box"><a href="/medreq">Requests</a></li>
-                            <li class="box"><a href="/meddelivery">Deliveries</a></li>
-                            <li class="box"><a href="/pharmaprofile">Profile</a></li>
-                            <li><button className="logout-button"><a onClick={this.props.onLogout}>Logout</a></button></li>
-                        </ul>
-                        <div style={{ clear: 'both' }} />
-                    </div>
+                        <h6 className="brand"><a href="#"><img src="https://i.postimg.cc/Y2RVP2ch/logo.png" /></a></h6>
+                        <div className="main_list" id="mainListDiv">
+                            <ul>
+                                <li class="box"><a href="/diaghome">Home</a></li>
+                                <li class="box"><a href="/testreq">Test Requests</a></li>
+                                <li class="box"><a href="/test">Tests</a></li>
+                                <li class="box"><a href="/dprofile">Profile</a></li>
+                                <li><button className="logout-button"><a onClick={this.props.onLogout}>Logout</a></button></li>
+                            </ul>
+                            <div style={{ clear: 'both' }} />
+                        </div>
 
-                    <div className="media_button">
-                        <button className="main_media_button" id="mediaButton">
-                            <span />
-                            <span />
-                            <span />
-                        </button>
-                    </div>
+                        <div className="media_button">
+                            <button className="main_media_button" id="mediaButton">
+                                <span />
+                                <span />
+                                <span />
+                            </button>
+                        </div>
 
-                </nav>
+                    </nav>
 
 
                 <div className="profile-container">

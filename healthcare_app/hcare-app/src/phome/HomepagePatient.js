@@ -9,7 +9,9 @@ import { Link, Redirect } from 'react-router-dom'
 class HomepagePatient extends Component {
   constructor(props) {
     super(props);
+    this.pop = this.pop.bind(this);
   }
+
   pop(document) {
     // Get the modal
     var modal = document.getElementById("myModal");
@@ -40,6 +42,7 @@ class HomepagePatient extends Component {
       }
     };
   }
+
   render() {
     if (!localStorage.getItem(ACCESS_TOKEN)) {
       return <Redirect
@@ -57,129 +60,104 @@ class HomepagePatient extends Component {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <link href='https://fonts.googleapis.com/css?family=Readex Pro' rel='stylesheet'></link>
-
-
-
-        <nav className="navb">
-          <h6 className="brand"><a href="#"><img src="https://i.postimg.cc/Y2RVP2ch/logo.png" /></a></h6>
-          <div className="main_list" id="mainListDiv">
-            <ul>
-              <li class="box"><a href="/phome">Home</a></li>
-              <li class="box"><a href="/pmeds">Medicine</a></li>
-              <li class="box"><a href="/ptest">Tests</a></li>
-              <div className="dropdown">
-                <button className="dropbtn"><a href="#">Appointments</a></button>
-                <div className="dropdown-content">
-                  <a href="/bookapp">Book </a>
-                  <a href="/appsch">Scheduled</a>
-                </div>
-              </div>
-
-              <li class="box"><a href="/pprofile">Profile</a></li>
-              {/* <li><button className="logout-button"><a href="#">Logout</a></button></li> */}
-              <li><button className="logout-button"><a onClick={this.props.onLogout}>Logout</a></button></li>
-            </ul>
+        <div className="container">
+          <p style={{ backgroundImage: 'url("https://i.postimg.cc/zBHgmGvK/bg.png")' }}>
+          </p><div className="responsive-bar">
+            <h6 className="brand"><a href="#"><img className="logo" src="https://i.postimg.cc/Y2RVP2ch/logo.png" /></a></h6>
+            <h4 className="menu"><img classname="nav" src="https://i.postimg.cc/J499N6Vq/nav.png" /></h4>
             <div style={{ clear: 'both' }} />
           </div>
+          {/*<div class="hamburger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+    </div> */}
+           <nav className="navb">
+                    <h6 className="brand"><a href="#"><img src="https://i.postimg.cc/Y2RVP2ch/logo.png" /></a></h6>
+                    <div className="main_list" id="mainListDiv">
+                        <ul>
+                            <li class="box"><a href="/phome">Home</a></li>
+                            <li class="box"><a href="/pmeds">Medicine</a></li>
+                            <li class="box"><a href="/ptest">Tests</a></li>
+                            <div className="dropdown">
+                                <button className="dropbtn"><a href="#">Appointments</a></button>
+                                <div className="dropdown-content">
+                                    <a href="/bookapp">Book </a>
+                                    <a href="/appsch">Scheduled</a>
+                                </div>
+                            </div>
 
-          <div className="media_button">
-            <button className="main_media_button" id="mediaButton">
-              <span />
-              <span />
-              <span />
-            </button>
-          </div>
+                            <li class="box"><a href="/pprofile">Profile</a></li>
+                            {/* <li><button className="logout-button"><a href="#">Logout</a></button></li> */}
+                            <li><button className="logout-button"><a onClick={this.props.onLogout}>Logout</a></button></li>
+                        </ul>
+                        <div style={{ clear: 'both' }} />
+                    </div>
 
-        </nav>
-
-        <div className="p-container">
-
-
-          <div className="dropdown-2">
-            <div className='emg' onChange={this.pop}>
-
-              <button className='emergency'>Emergency</button>
+                </nav>
+          <div className="content">
+            <div className="content-inner">
+              <button className="voice"><a href='#'><img src="https://i.postimg.cc/44pLCJrz/voice.png" /></a></button>
             </div>
+            <div className='dropdown'>
+              <div className='emg' onChange={this.pop}>
 
-            <div className='dropdown-content'>
-              <button className='ambulance' id='ambulance' onclick='p'>Ambulance</button>
-              <div id="myModal" className='modal'>
-
-
-                <div className="modal-content">
-                  <img src="https://i.postimg.cc/zv1pdgz0/ambulancepng.png" />
-                  <div className='modal-header'>
-                    <span class="close">&times;</span>
-                  </div>
-
-                  <div className='modal-body'>
-                    <h2>HELP IS ON THE WAY</h2>
-                    <p>Follow the steps below: </p>
-                    <ol>
-                      <li>Wash your hands or put on disposable gloves if you have them. This will protect you from infectious diseases like viral hepatitis and HIV/AIDS that can be spread in a person’s blood.6
-                        Rinse the wound with water.</li>
-                      <li>Cover the wound with a gauze or cloth (e.g., towel, blanket, clothing).
-                      </li>
-                      <li>Apply direct pressure to stop the flow of blood and encourage clotting (when blood naturally thickens to stop blood loss).
-                      </li>
-                      <li>Elevate the bleeding body part above the person’s head if you can.
-                      </li></ol>
-
-                  </div>
-                </div>
-
+                <button className='emergency'>Emergency</button>
               </div>
-              <a href="#">Doctor</a>
-            </div>
-          </div>
 
+              <div className='dropdown-content'>
+                <button className='ambulance' id='ambulance' onclick='p'>Ambulance</button>
+                <div id="myModal" className='modal'>
+
+
+                  <div className="modal-content">
+                    <img src="https://i.postimg.cc/zv1pdgz0/ambulancepng.png" />
+                    <div className='modal-header'>
+                      <span class="close">&times;</span>
+                    </div>
+
+                    <div className='modal-body'>
+                      <h2>HELP IS ON THE WAY</h2>
+                      <p>Follow the steps below: </p>
+                      <ol>
+                        <li>...</li>
+                        <li>...</li>
+                      </ol>
+
+                    </div>
+                  </div>
+
+                </div>
+                <button className="doctor" id="doc">Doctor</button>
+
+                <div id="myModal" className="modal">
+
+
+                  <div className='modal-content'>
+                    <div className='doci'>
+                      <img src="https://i.postimg.cc/k5mcqM0Z/doc.png" /> </div>
+                    <div className='modal-header'>
+                      <span class="close">&times;</span>
+                    </div>
+
+                    <div className='modal-body'>
+                      <h1>WE ARE A FINDING A ADOCTOR FOR YOU!</h1>
+                      <h4>WE WILL LET YOU KNOW SOON.</h4>
+
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
-
 
     );
   }
 }
-class hamburgeroption extends Component {
-  constructor(props) {
-    super(props);
-    this.hamburger = this.hamburger.bind(this);
-  }
-
-
-
-  hamburger(document) {
-    var mainListDiv = document.getElementById("mainListDiv"),
-      mediaButton = document.getElementById("mediaButton");
-
-    mediaButton.onclick = function () {
-
-      "use strict";
-
-      mainListDiv.classList.toggle("show_list");
-      mediaButton.classList.toggle("active");
-    };
-  }
-}
 export default HomepagePatient;
-{/*}
-
-hamburgerfun(){
-const hamburger = document.querySelector(".hamburger");
-const navLinks = document.querySelector(".nav-links");
-const links = document.querySelectorAll(".nav-links li");
-
-hamburger.addEventListener('click', ()=>{
-   //Animate Links
-    navLinks.classList.toggle("open");
-    links.forEach(link => {
-        link.classList.toggle("fade");
-    });
-
-    //Hamburger Animation
-    hamburger.classList.toggle("toggle");
-});
-} */}
-
 
 

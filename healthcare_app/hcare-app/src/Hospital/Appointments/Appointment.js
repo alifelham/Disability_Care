@@ -56,27 +56,27 @@ class Appointment extends Component {
 
 
                 <nav className="navb">
-                    <h6 className="brand"><a href="#"><img src="https://i.postimg.cc/Y2RVP2ch/logo.png" /></a></h6>
-                    <div className="main_list" id="mainListDiv">
+                        <h6 className="brand"><a href="#"><img src="https://i.postimg.cc/Y2RVP2ch/logo.png" /></a></h6>
+                        <div className="main_list" id="mainListDiv">
                         <ul>
-                            <li class="box"><a href="hhome">Home</a></li>
+                        <li class="box"><a href="/dochome">Home</a></li>
                             <li class="box"><a href="/appreq">Appointment Requests</a></li>
                             <li class="box"><a href="/app">Appointments</a></li>
-                            <li class="box"><a href="/profile">Profile</a></li>
+                            <li class="box"><a href="/hprofile">Profile</a></li>
                             <li><button className="logout-button"><a onClick={this.props.onLogout}>Logout</a></button></li>
                         </ul>
-                        <div style={{ clear: 'both' }} />
-                    </div>
+                            <div style={{ clear: 'both' }} />
+                        </div>
 
-                    <div className="media_button">
-                        <button className="main_media_button" id="mediaButton">
-                            <span />
-                            <span />
-                            <span />
-                        </button>
-                    </div>
+                        <div className="media_button">
+                            <button className="main_media_button" id="mediaButton">
+                                <span />
+                                <span />
+                                <span />
+                            </button>
+                        </div>
 
-                </nav>
+                    </nav>
 
 
                 <div className="profile-container">

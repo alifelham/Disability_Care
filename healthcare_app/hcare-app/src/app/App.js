@@ -3,7 +3,6 @@ import {
   Route,
   Switch
 } from 'react-router-dom';
-import AppHeader from '../common/AppHeader';
 import Home from '../home/Home';
 import LoadingIndicator from '../common/LoadingIndicator';
 import { getCurrentUser } from '../util/APIUtils';
@@ -23,8 +22,10 @@ import HomepagePatient from '../phome/HomepagePatient';
 import PatientProfile from '../user/patient/profile/PatientProfile';
 import PatientAppointment from '../Patient/Appointments/PatientAppointment';
 import MedAssigned from '../Patient/Medicines/MedAssigned';
+import PatientTestReport from '../Patient/Tests/TestReport';
 
 /* HOSPITAL COMPONENTS */
+import HomepageHospital from '../Hospital/Home/HomepageHospital';
 import HospitalProfile from '../Hospital/Profile/HospitalProfile';
 import AppointmentReq from '../Hospital/RequestedAppointments/Appointment';
 import Appointment from '../Hospital/Appointments/Appointment';
@@ -38,7 +39,7 @@ import MainPharmaMap from '../Pharmacy/MainPharmaMap/MainPharmaMap';
 import HomepagePharma from '../Pharmacy/PharmaHome/HomepagePharma';
 
 /* DOCTOR COMPONENTS */
-import DocProfile from '../user/doctor/profile/DocProfile';
+import DoctorProfile from '../Doctor/Profile/DoctorProfile';
 import DocAppointment from '../Doctor/Appointments/DocAppointment';
 import FollowupPatients from '../Doctor/FollowupPatients/FollowupPatients';
 import DigitalPrescription from '../Doctor/Digital Prescription/DigitalPrescription';
@@ -48,6 +49,7 @@ import HomepageDoctor from '../Doctor/Home/HomepageDoctor';
 import TestReq from '../DiagnosticCenter/TestRequest/TestReq';
 import TestReport from '../DiagnosticCenter/TestReports/TestReport';
 import DiagProfile from '../DiagnosticCenter/Profile/DiagProfile';
+import HomepageDiag from '../DiagnosticCenter/Home/HomepageDiag';
 
 
 
@@ -121,7 +123,7 @@ class App extends Component {
             <Route path="/phome"
               render={(props) => <HomepagePatient authenticated={this.state.authenticated} onLogout = {this.handleLogout} {...props} />}></Route>
             <Route path="/ptest" 
-              render={(props) => <TestReport authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route> 
+              render={(props) => <PatientTestReport authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route> 
 
             {/* HOSPITAL ROUTES*/}
             <Route path="/hprofile" 
@@ -132,6 +134,8 @@ class App extends Component {
               render={(props) => <Appointment authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route>
              <Route path="/avdoc" 
               render={(props) => <AvailableDoctors authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route>
+            <Route path="/hhome" 
+              render={(props) => <HomepageHospital authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route> 
             
 
             {/* PHARMACY ROUTES*/}
@@ -147,6 +151,8 @@ class App extends Component {
 
 
             {/* DOCTOR ROUTES*/}
+            <Route path="/docprofile" 
+              render={(props) => <DoctorProfile authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route> 
             <Route path="/docapp" 
               render={(props) => <DocAppointment authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route> 
             <Route path="/folpat" 
@@ -164,6 +170,8 @@ class App extends Component {
               render={(props) => <TestReport authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route> 
             <Route path="/dprofile" 
               render={(props) => <DiagProfile authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route> 
+            <Route path="/diaghome" 
+              render={(props) => <HomepageDiag authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route> 
             
             
             <Route path="/first" 

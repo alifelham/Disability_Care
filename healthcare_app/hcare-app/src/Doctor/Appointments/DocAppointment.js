@@ -59,10 +59,10 @@ class Appointment extends Component {
                     <h6 className="brand"><a href="#"><img src="https://i.postimg.cc/Y2RVP2ch/logo.png" /></a></h6>
                     <div className="main_list" id="mainListDiv">
                         <ul>
-                            <li class="box"><a href="hhome">Home</a></li>
+                            <li class="box"><a href="/dochome">Home</a></li>
                             <li class="box"><a href="/appreq">Appointment Requests</a></li>
                             <li class="box"><a href="/app">Appointments</a></li>
-                            <li class="box"><a href="/profile">Profile</a></li>
+                            <li class="box"><a href="/docprofile">Profile</a></li>
                             <li><button className="logout-button"><a onClick={this.props.onLogout}>Logout</a></button></li>
                         </ul>
                         <div style={{ clear: 'both' }} />
