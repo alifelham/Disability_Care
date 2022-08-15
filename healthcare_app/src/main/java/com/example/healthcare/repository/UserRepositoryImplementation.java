@@ -51,7 +51,7 @@ public class UserRepositoryImplementation implements UserRepository{
         Iterable<DocumentReference>documentReferences = dbFirestore.collection("users").listDocuments();
         Iterator<DocumentReference> iterator = documentReferences.iterator();
 
-        User user = null;
+        User user = new User();
 
         while(iterator.hasNext())
         {
@@ -67,6 +67,11 @@ public class UserRepositoryImplementation implements UserRepository{
         //System.out.println("In find by email =>" + user.getEmail());
 
         user.setEmail("null");
+        user.setEmailVerified(false);
+        user.setId(-1L);
+        user.setImageUrl("null");
+        user.setName("null");
+
 
         return user;
     }

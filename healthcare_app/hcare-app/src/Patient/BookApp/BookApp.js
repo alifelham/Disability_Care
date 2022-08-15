@@ -1,9 +1,6 @@
 import './BookApp.css';
 import React, { Component } from 'react';
-import { GOOGLE_AUTH_URL, FACEBOOK_AUTH_URL, GITHUB_AUTH_URL, ACCESS_TOKEN } from '../constants';
-import { login } from '../util/APIUtils';
 import { Link, Redirect } from 'react-router-dom'
-import Alert from 'react-s-alert';
 
 
 
@@ -107,31 +104,13 @@ class PBook extends Component {
 
                 </nav>
                     <div className='consult-container'>
-                        <div className="container mt-4 p-4">
+                        <div className="container5">
                             <div className="row">
                                 <div className="col-md-6">
                                     <h2 className="text-center my-4">
                                         Find Consultations
                                     </h2>
                                     <form>
-                                        {/*} <div className="form-group row">
-                <label className="col-sm-4 col-lg-4">
-                  Patient Name
-                </label>
-                <div className="col-sm-8 col-lg-8">
-                  <input type="text" id="patient-name" className="form-control" placeholder="Name" required />
-                </div>
-              </div>
-            
-              <div className="form-group row">
-                <label className="col-sm-4 col-lg-4">
-                  Contact
-                </label>
-                <div className="col-sm-8 col-lg-8">
-                  <input type="tel" id="contact" className="form-control" placeholder={123} required />
-                </div>
-              </div>
-             */}
                                         <div className="form-group row">
                                             <label className="col-sm-4 col-lg-4">
                                                 Date
@@ -157,15 +136,17 @@ class PBook extends Component {
                                             <div className="col-sm-8 col-lg-8">
                                                 <textarea id="symptoms" className="form-control" required defaultValue={""} />
                                             </div>
-                                        </div>
-                                        {/**/}
-                                        <div className="form-group row justify-content-end">
+
+                                            <div className="form-group row justify-content-end">
                                             <div className="col-sm-5">
-                                                <button type="submit" className="btn btn-form">
-                                                    Confirm
+                                                <button color="white" className="btn btn-form">
+                                                    <a href = "/appsch">Confirm</a>
                                                 </button>
                                             </div>
                                         </div>
+                                        </div>
+                                        {/**/}
+                                        
                                     </form>
                                 </div>
                                 <div className="col-md-6">
