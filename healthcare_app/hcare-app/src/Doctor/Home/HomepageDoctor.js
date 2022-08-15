@@ -5,7 +5,6 @@ import React, { Component } from 'react';
 import { GOOGLE_AUTH_URL, FACEBOOK_AUTH_URL, GITHUB_AUTH_URL, ACCESS_TOKEN } from '../../constants';
 import { login } from '../../util/APIUtils';
 import { Link, Redirect } from 'react-router-dom'
-import Alert from 'react-s-alert';
 
 class HomepageDoctor extends Component {
     constructor(props) {

@@ -5,7 +5,6 @@ import React, { Component } from 'react';
 import { GOOGLE_AUTH_URL, FACEBOOK_AUTH_URL, GITHUB_AUTH_URL, ACCESS_TOKEN } from '../../constants';
 import { login } from '../../util/APIUtils';
 import { Link, Redirect } from 'react-router-dom'
-import Alert from 'react-s-alert';
 
 class HospitalProfile extends Component {
     constructor(props) {
@@ -35,7 +34,7 @@ class HospitalProfile extends Component {
                         <h6 className="brand"><a href="#"><img src="https://i.postimg.cc/Y2RVP2ch/logo.png" /></a></h6>
                         <div className="main_list" id="mainListDiv">
                         <ul>
-                            <li class="box"><a href="/dochome">Home</a></li>
+                        <li class="box"><a href="/dochome">Home</a></li>
                             <li class="box"><a href="/appreq">Appointment Requests</a></li>
                             <li class="box"><a href="/app">Appointments</a></li>
                             <li class="box"><a href="/hprofile">Profile</a></li>

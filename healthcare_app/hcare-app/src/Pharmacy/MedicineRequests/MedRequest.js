@@ -4,20 +4,16 @@ import './MedRequest.css';
 import React, { Component } from 'react';
 import { GOOGLE_AUTH_URL, FACEBOOK_AUTH_URL, GITHUB_AUTH_URL, ACCESS_TOKEN, API_BASE_URL } from '../../constants';
 import { login } from '../../util/APIUtils';
-import { Link, Redirect } from 'react-router-dom'
-import Alert from 'react-s-alert';
+import { Link, Redirect, Routes, Switch } from 'react-router-dom'
 import axios from 'axios';
+import MainPharmaMap from '../PharmaMap/PharmaMap';
 
 var idx1 = 1;
 var idx2 = 1;
 
 class MedRequest extends Component {
     constructor(props) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            console.log("Latitude is :", position.coords.latitude);
-            console.log("Longitude is :", position.coords.longitude);
-            
-            this.props.lat = position.coords.latitude;});
+        
         super(props);
     }
 
@@ -64,6 +60,27 @@ class MedRequest extends Component {
             console.log(res);
             window.location.reload(false);
         })
+    }
+
+    handleLoc = (e) => {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            console.log("Latitude is :", position.coords.latitude);
+            console.log("Longitude is :", position.coords.longitude);
+
+            e.latitude = position.coords.latitude;
+            e.longitude = position.coords.longitude;
+            axios({
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem(ACCESS_TOKEN)}`,
+                },
+                method: 'put',
+                url: API_BASE_URL + '/medReqs/updateUser',
+                data: e
+            }).then(res => {
+                console.log(res);
+                window.location.reload(false);
+            })
+            });
     }
 
     componentDidMount = () => {
@@ -154,6 +171,7 @@ class MedRequest extends Component {
                                     <p> Date: &emsp; {medreq.date}</p>
 
                                     <div className='btns'>
+                                        <div><Link to={`/map`}><button className="defer-button" type="button" onClick={() => this.handleLoc(this.props.currentUser)}><a>Location</a></button></Link></div>
                                         <div><Link to={`/medreq`}><button className="defer-button" type="button" onClick={() => this.handleDefer(medreq)}><a>Defer</a></button></Link></div>
                                         <div><Link to={`/meddelivery`}><button type ="button" className="assigned-button" onClick={() => this.handleDeliver(medreq)}>Deliver</button></Link></div>
                                     </div>

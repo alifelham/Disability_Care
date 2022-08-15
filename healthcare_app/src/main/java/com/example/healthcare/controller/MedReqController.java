@@ -2,6 +2,7 @@ package com.example.healthcare.controller;
 
 import com.example.healthcare.model.AppReq;
 import com.example.healthcare.model.MedReq;
+import com.example.healthcare.model.User;
 import com.example.healthcare.service.AppReqService;
 import com.example.healthcare.service.MedService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,12 @@ public class MedReqController {
     public MedReq updateMedReq(@RequestBody MedReq medReq) throws ExecutionException, InterruptedException {
         System.out.println(medReq.toString());
         return medReqService.updateMedReq(medReq);
+    }
+
+    @PutMapping("/updateUser")
+    public void updateUser(@RequestBody User user) throws ExecutionException, InterruptedException {
+
+        medReqService.updateUser(user);
     }
 }
 

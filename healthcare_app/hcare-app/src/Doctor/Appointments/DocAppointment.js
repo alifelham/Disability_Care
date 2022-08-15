@@ -5,7 +5,6 @@ import React, { Component } from 'react';
 import { GOOGLE_AUTH_URL, FACEBOOK_AUTH_URL, GITHUB_AUTH_URL, ACCESS_TOKEN, API_BASE_URL } from '../../constants';
 import { login } from '../../util/APIUtils';
 import { Link, Redirect } from 'react-router-dom'
-import Alert from 'react-s-alert';
 import axios from 'axios';
 
 class Appointment extends Component {
@@ -32,7 +31,7 @@ class Appointment extends Component {
                 Authorization: `Bearer ${localStorage.getItem(ACCESS_TOKEN)}`,
             }
         }).then(res => {
-            console.log(res);
+            console.log("Lalalal" + res);
             this.setState({ appointments: res.data })
         })
     }
@@ -101,7 +100,7 @@ class Appointment extends Component {
                                 </div>
                             </div>)
                     }) }
-                    </div>
+                    </div>      
             
 
 

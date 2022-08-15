@@ -30,6 +30,11 @@ public class AppointmentController {
     public List<Appointments> getAppointmentsByDID(@PathVariable Long DID) throws ExecutionException, InterruptedException{
         return appointmentService.getFutureAppointmentsByDID(DID);
     }
+    @GetMapping("/getAppointmentsByPID/{PID}")
+    public List<Appointments> getAppointmentsByPID(@PathVariable Long PID) throws ExecutionException, InterruptedException{
+        return appointmentService.getAppointmentsByPID(PID);
+    }
+
 
     @DeleteMapping("/deleteAppointmentByAID/{AID}")
     public String deleteAppointment(@PathVariable Long AID) throws ExecutionException, InterruptedException {

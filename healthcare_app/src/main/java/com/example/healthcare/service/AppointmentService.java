@@ -86,6 +86,29 @@ public class AppointmentService {
 
         return AppointmentList;
     }
+    public List<Appointments> getAppointmentsByPID(Long DID) throws ExecutionException, InterruptedException {
+
+        Firestore dbFirestore = FirestoreClient.getFirestore();
+
+        Iterable<DocumentReference>documentReferences = dbFirestore.collection("Appointments").listDocuments();
+        Iterator<DocumentReference> iterator = documentReferences.iterator();
+
+        List<Appointments> AppointmentList = new ArrayList<>();
+        Appointments appointments = null;
+
+        while(iterator.hasNext())
+        {
+            DocumentReference documentReference = iterator.next();
+            ApiFuture<DocumentSnapshot> future = documentReference.get();
+
+            DocumentSnapshot documentSnapshot = future.get();
+
+            appointments = documentSnapshot.toObject(Appointments.class);
+            if(DID == appointments.getPID())AppointmentList.add(appointments);
+        }
+
+        return AppointmentList;
+    }
 
     public String deleteAppointment(Long ID) throws ExecutionException, InterruptedException {
         Firestore dbFirestore = FirestoreClient.getFirestore();

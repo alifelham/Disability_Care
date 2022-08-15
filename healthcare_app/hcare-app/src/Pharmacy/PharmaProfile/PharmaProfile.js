@@ -5,7 +5,6 @@ import React, { Component } from 'react';
 import { GOOGLE_AUTH_URL, FACEBOOK_AUTH_URL, GITHUB_AUTH_URL, ACCESS_TOKEN } from '../../constants';
 import { login } from '../../util/APIUtils';
 import { Link, Redirect } from 'react-router-dom'
-import Alert from 'react-s-alert';
 
 class Profile extends Component {
     constructor(props) {
@@ -63,7 +62,7 @@ class Profile extends Component {
                                     <p> Pharmacy: &ensp; {this.props.currentUser.name}</p>
                                     <p> ID: &emsp; {this.props.currentUser.id}</p>
                                     <p > Email: &emsp; &emsp; &ensp; {this.props.currentUser.email}</p>
-                                    <p> Contact:  &emsp; {this.props.currentUser.contact}</p>
+                                    <p> Contact: &emsp; {this.props.currentUser.id}</p>
                                     <p> Address:  &emsp; {this.props.currentUser.address}</p>
                                 </div>
                             </div>

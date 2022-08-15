@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom'
 import { GOOGLE_AUTH_URL, FACEBOOK_AUTH_URL } from '../../constants';
 import { signup } from '../../util/APIUtils';
-import Alert from 'react-s-alert';
 import './signupp.css'
 
 class Signup extends Component {
@@ -62,10 +61,10 @@ class SignupForm extends Component {
         signup(signUpRequest)
             .then(response => {
                 this.props.history.push("/login")
-                Alert.success("You're successfully registered. Please login to continue!");
+                //Alert.success("You're successfully registered. Please login to continue!");
             }).catch(error => {
-                if(signUpRequest.confirm_pass.localeCompare(signUpRequest.password) != 0)Alert.error((error && error.message) || "The passwords do not match! Please try again.");
-                else Alert.error((error && error.message) || "The email is already in use. Please try again with a different one.");
+                //if(signUpRequest.confirm_pass.localeCompare(signUpRequest.password) != 0)Alert.error((error && error.message) || "The passwords do not match! Please try again.");
+                //else Alert.error((error && error.message) || "The email is already in use. Please try again with a different one.");
             });
     }
 

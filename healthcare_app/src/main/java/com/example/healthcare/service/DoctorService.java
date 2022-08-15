@@ -42,7 +42,7 @@ public class DoctorService {
         Iterable<DocumentReference>documentReferences = dbFirestore.collection("Doctor").listDocuments();
         Iterator<DocumentReference> iterator = documentReferences.iterator();
 
-        Doctor doctor = new Doctor();
+        Doctor doctor = null;
 
         while(iterator.hasNext())
         {
@@ -52,10 +52,10 @@ public class DoctorService {
             DocumentSnapshot documentSnapshot = future.get();
 
             doctor = documentSnapshot.toObject(Doctor.class);
-            if(id == doctor.getDID())return doctor;
+            if(id == doctor.getDID())break;
         }
 
-        return new Doctor();
+        return doctor;
     }
 
     public List<Doctor> getAllDoctors() throws ExecutionException, InterruptedException {

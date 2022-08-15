@@ -5,7 +5,6 @@ import React, { Component } from 'react';
 import { GOOGLE_AUTH_URL, FACEBOOK_AUTH_URL, GITHUB_AUTH_URL, ACCESS_TOKEN } from '../../constants';
 import { login } from '../../util/APIUtils';
 import { Link, Redirect } from 'react-router-dom'
-import Alert from 'react-s-alert';
 
 import axios from 'axios';
 
@@ -115,9 +114,9 @@ class TestReport extends Component {
                                     <p> DID: &emsp; {medreq.did}</p>
                                     <p> Date: &emsp; {medreq.date}</p>
 
-                                    <div className='btns'>
-                                        <div><Link to={`/test`}><button type ="button" className="assigned-button" onClick={() => this.handleUpload(medreq)}>Delivered On: {medreq.delivery}</button></Link></div>
-                                    </div>
+                                
+                                    <div><Link to={`/test`}><button type ="button" className="assigned-button">Delivered On: {medreq.delivery}</button></Link></div>
+                                   
                                 </div>
                             </div>)
                     })}

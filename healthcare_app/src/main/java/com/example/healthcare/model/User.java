@@ -23,6 +23,8 @@ public class User {
 
     private String providerId;
 
+    private double latitude;
+    private double longitude;
     private String location;
 
     private String userType;
@@ -101,6 +103,22 @@ public class User {
 
     public String getProviderId() {
         return providerId;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 
     public void setProviderId(String providerId) {

@@ -2,6 +2,7 @@ package com.example.healthcare.service;
 
 import com.example.healthcare.model.AppReq;
 import com.example.healthcare.model.MedReq;
+import com.example.healthcare.model.User;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.DocumentSnapshot;
@@ -17,9 +18,12 @@ import java.util.concurrent.ExecutionException;
 
 @Service
 public class MedService {
+
+    static Long id = 0L;
     public MedReq saveMedReq(MedReq medReq) throws ExecutionException, InterruptedException {
         Firestore dbFirestore = FirestoreClient.getFirestore();
 
+        medReq.setRID(id++);
         ApiFuture<WriteResult> collectionApiFuture = dbFirestore.collection("MedReq").document(medReq.getRID().toString()).set(medReq);
 
         return medReq;
@@ -63,5 +67,12 @@ public class MedService {
         ApiFuture<WriteResult> collectionApiFuture = dbFirestore.collection("MedReq").document(medReq.getRID().toString()).set(medReq);
 
         return medReq;
+    }
+
+    public void updateUser(User user) throws ExecutionException, InterruptedException {
+        Firestore dbFirestore = FirestoreClient.getFirestore();
+
+        ApiFuture<WriteResult> collectionApiFuture = dbFirestore.collection("users").document(user.getName()).set(user);
+
     }
 }

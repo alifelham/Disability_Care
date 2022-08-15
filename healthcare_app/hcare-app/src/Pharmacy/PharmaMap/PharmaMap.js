@@ -127,7 +127,3 @@ const farOptions = {
   strokeColor: "#FF5252",
   fillColor: "#FF5252",
 };
-
-
-
-

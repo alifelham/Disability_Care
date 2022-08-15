@@ -8,9 +8,6 @@ import Home from '../home/Home';
 import LoadingIndicator from '../common/LoadingIndicator';
 import { getCurrentUser } from '../util/APIUtils';
 import { ACCESS_TOKEN } from '../constants';
-import Alert from 'react-s-alert';
-import 'react-s-alert/dist/s-alert-default.css';
-import 'react-s-alert/dist/s-alert-css-effects/slide.css';
 import './App.css';
 
 
@@ -19,9 +16,13 @@ import Login from '../user/login/Login';
 import Signup from '../user/signup/Signup';
 import OAuth2RedirectHandler from '../user/oauth2/OAuth2RedirectHandler';
 import NotFound from '../common/NotFound';
+import First from '../user/first/Signup';
 
 /* PATIENT COMPONENTS */
 import HomepagePatient from '../phome/HomepagePatient';
+import PatientProfile from '../user/patient/profile/PatientProfile';
+import PatientAppointment from '../Patient/Appointments/PatientAppointment';
+import MedAssigned from '../Patient/Medicines/MedAssigned';
 
 /* HOSPITAL COMPONENTS */
 import HospitalProfile from '../Hospital/Profile/HospitalProfile';
@@ -34,22 +35,21 @@ import MedRequest from '../Pharmacy/MedicineRequests/MedRequest';
 import MedDelivery from '../Pharmacy/MedicineDelivery/MedDelivery';
 import PharmaProfile from '../Pharmacy/PharmaProfile/PharmaProfile';
 import MainPharmaMap from '../Pharmacy/MainPharmaMap/MainPharmaMap';
-
+import HomepagePharma from '../Pharmacy/PharmaHome/HomepagePharma';
 
 /* DOCTOR COMPONENTS */
-import Profile from '../user/doctor/profile/Profile';
+import DocProfile from '../user/doctor/profile/DocProfile';
 import DocAppointment from '../Doctor/Appointments/DocAppointment';
 import FollowupPatients from '../Doctor/FollowupPatients/FollowupPatients';
-import TestReq from '../DiagnosticCenter/TestRequest/TestReq';
-import TestReport from '../DiagnosticCenter/TestReports/TestReport';
-import PatientAppointment from '../Patient/Appointments/PatientAppointment';
-import MedAssigned from '../Patient/Medicines/MedAssigned';
 import DigitalPrescription from '../Doctor/Digital Prescription/DigitalPrescription';
-import DiagProfile from '../DiagnosticCenter/Profile/DiagProfile';
-import HomepagePharma from '../Pharmacy/PharmaHome/HomepagePharma';
 import HomepageDoctor from '../Doctor/Home/HomepageDoctor';
 
 /* DIAGNOSTIC CENTER COMPONENTS */
+import TestReq from '../DiagnosticCenter/TestRequest/TestReq';
+import TestReport from '../DiagnosticCenter/TestReports/TestReport';
+import DiagProfile from '../DiagnosticCenter/Profile/DiagProfile';
+
+
 
 
 
@@ -92,7 +92,7 @@ class App extends Component {
       authenticated: false,
       currentUser: null
     });
-    Alert.success("You're safely logged out!");
+    //Alert.success("You're safely logged out!");
   }
 
   componentDidMount() {
@@ -113,12 +113,15 @@ class App extends Component {
             {/* PATIENT ROUTES*/}
             <Route exact path="/" component={Home} ></Route>           
             <Route path="/pprofile" 
-              render={(props) => <Profile authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route>
+              render={(props) => <PatientProfile authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route>
             <Route path="/appsch" 
               render={(props) => <PatientAppointment authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route>
             <Route path="/pmeds" 
               render={(props) => <MedAssigned authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route>
-            
+            <Route path="/phome"
+              render={(props) => <HomepagePatient authenticated={this.state.authenticated} onLogout = {this.handleLogout} {...props} />}></Route>
+            <Route path="/ptest" 
+              render={(props) => <TestReport authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route> 
 
             {/* HOSPITAL ROUTES*/}
             <Route path="/hprofile" 
@@ -141,7 +144,7 @@ class App extends Component {
             < Route path="/map" component={MainPharmaMap}></Route>
             <Route path="/pharmahome" 
               render={(props) => <HomepagePharma authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route> 
-               
+
 
             {/* DOCTOR ROUTES*/}
             <Route path="/docapp" 
@@ -162,7 +165,9 @@ class App extends Component {
             <Route path="/dprofile" 
               render={(props) => <DiagProfile authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route> 
             
-
+            
+            <Route path="/first" 
+              render={(props) => <First authenticated={this.state.authenticated} currentUser = {this.state.currentUser} onLogout = {this.handleLogout} {...props} />}></Route> 
             <Route path="/login"
               render={(props) => <Login authenticated={this.state.authenticated} {...props} />}></Route>
             <Route path="/signup"
@@ -173,8 +178,6 @@ class App extends Component {
             <Route component={NotFound}></Route>
           </Switch>
         
-        <Alert stack={{limit: 3}} 
-          position='top-right' effect='slide' offset={65} />
       </div>
     );
   }
