@@ -6,13 +6,7 @@ import { Link, Redirect } from 'react-router-dom'
 
 class BookApp extends Component {
     render() {
-        if (this.props.authenticated) {
-            return <Redirect
-                to={{
-                    pathname: "/",
-                    state: { from: this.props.location }
-                }} />;
-        }
+        
 
         return (
             <div className='bg'>
@@ -28,23 +22,13 @@ class PBook extends Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            email: '',
+            password: ''
+        };
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
-
-    /*
-    hamburger(document) {
-      var mainListDiv = document.getElementById("mainListDiv"),
-          mediaButton = document.getElementById("mediaButton");
-    
-      mediaButton.onclick = function () {
-    
-          "use strict";
-    
-          mainListDiv.classList.toggle("show_list");
-          mediaButton.classList.toggle("active");
-      };
-    }
-    */
-
 
     render() {
         return (
@@ -73,36 +57,36 @@ class PBook extends Component {
             <div class="line3"></div>
     </div>*/}
                     <nav className="navb">
-                    <h6 className="brand"><a href="#"><img src="https://i.postimg.cc/Y2RVP2ch/logo.png" /></a></h6>
-                    <div className="main_list" id="mainListDiv">
-                        <ul>
-                            <li class="box"><a href="/phome">Home</a></li>
-                            <li class="box"><a href="/pmeds">Medicine</a></li>
-                            <li class="box"><a href="/ptest">Tests</a></li>
-                            <div className="dropdown">
-                                <button className="dropbtn"><a href="#">Appointments</a></button>
-                                <div className="dropdown-content">
-                                    <a href="/bookapp">Book </a>
-                                    <a href="/appsch">Scheduled</a>
+                        <h6 className="brand"><a href="#"><img src="https://i.postimg.cc/Y2RVP2ch/logo.png" /></a></h6>
+                        <div className="main_list" id="mainListDiv">
+                            <ul>
+                                <li class="box"><a href="/phome">Home</a></li>
+                                <li class="box"><a href="/pmeds">Medicine</a></li>
+                                <li class="box"><a href="/ptests">Tests</a></li>
+                                <div className="dropdown">
+                                    <button className="dropbtn"><a href="#">Appointments</a></button>
+                                    <div className="dropdown-content">
+                                        <a href="/bookapp">Book </a>
+                                        <a href="/appsch">Scheduled</a>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <li class="box"><a href="/pprofile">Profile</a></li>
-                            {/* <li><button className="logout-button"><a href="#">Logout</a></button></li> */}
-                            <li><button className="logout-button"><a onClick={this.props.onLogout}>Logout</a></button></li>
-                        </ul>
-                        <div style={{ clear: 'both' }} />
-                    </div>
+                                <li class="box"><a href="/pprofile">Profile</a></li>
+                                {/* <li><button className="logout-button"><a href="#">Logout</a></button></li> */}
+                                <li><button className="logout-button"><a onClick={this.props.onLogout}>Logout</a></button></li>
+                            </ul>
+                            <div style={{ clear: 'both' }} />
+                        </div>
 
-                    <div className="media_button">
-                        <button className="main_media_button" id="mediaButton">
-                            <span />
-                            <span />
-                            <span />
-                        </button>
-                    </div>
+                        <div className="media_button">
+                            <button className="main_media_button" id="mediaButton">
+                                <span />
+                                <span />
+                                <span />
+                            </button>
+                        </div>
 
-                </nav>
+                    </nav>
                     <div className='consult-container'>
                         <div className="container5">
                             <div className="row">
@@ -119,15 +103,7 @@ class PBook extends Component {
                                                 <input type="date" id="date" className="form-control" />
                                             </div>
                                         </div>
-                                        {/**/}
-                                        <div className="form-group row">
-                                            <label className="col-sm-4 col-lg-4">
-                                                Time
-                                            </label>
-                                            <div className="col-sm-8 col-lg-8">
-                                                <input type="time" id="time" className="form-control" />
-                                            </div>
-                                        </div>
+                                        
                                         {/**/}
                                         <div className="form-group row">
                                             <label className="col-sm-4 col-lg-4">

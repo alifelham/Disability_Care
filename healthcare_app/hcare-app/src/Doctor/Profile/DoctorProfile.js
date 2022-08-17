@@ -37,7 +37,7 @@ class DoctorProfile extends Component {
                         <li class="box"><a href="/dochome">Home</a></li>
                             <li class="box"><a href="/appreq">Appointment Requests</a></li>
                             <li class="box"><a href="/app">Appointments</a></li>
-                            <li class="box"><a href="/hprofile">Profile</a></li>
+                            <li class="box"><a href="/docprofile">Profile</a></li>
                             <li><button className="logout-button"><a onClick={this.props.onLogout}>Logout</a></button></li>
                         </ul>
                             <div style={{ clear: 'both' }} />
@@ -54,7 +54,7 @@ class DoctorProfile extends Component {
                     </nav>
 
                     <div className="profile-container">
-                    <div><h1>Hospital Profile:</h1></div>
+                    <div><h1>Doctor Profile:</h1></div>
                             <div className="profile-info">
                                 
                                            

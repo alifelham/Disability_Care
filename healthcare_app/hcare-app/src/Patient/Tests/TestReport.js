@@ -50,28 +50,37 @@ class PatientTestReport extends Component {
                 <link href='https://fonts.googleapis.com/css?family=Readex Pro' rel='stylesheet'></link>
                 
              
-                    <nav className="navb">
-                        <h6 className="brand"><a href="#"><img src="https://i.postimg.cc/Y2RVP2ch/logo.png" /></a></h6>
-                        <div className="main_list" id="mainListDiv">
-                            <ul>
-                                <li class="box"><a href="/diaghome">Home</a></li>
-                                <li class="box"><a href="/testreq">Test Requests</a></li>
-                                <li class="box"><a href="/test">Tests</a></li>
-                                <li class="box"><a href="/dprofile">Profile</a></li>
-                                <li><button className="logout-button"><a onClick={this.props.onLogout}>Logout</a></button></li>
-                            </ul>
-                            <div style={{ clear: 'both' }} />
-                        </div>
+                <nav className="navb">
+                    <h6 className="brand"><a href="#"><img src="https://i.postimg.cc/Y2RVP2ch/logo.png" /></a></h6>
+                    <div className="main_list" id="mainListDiv">
+                        <ul>
+                            <li class="box"><a href="/phome">Home</a></li>
+                            <li class="box"><a href="/pmeds">Medicine</a></li>
+                            <li class="box"><a href="/ptest">Tests</a></li>
+                            <div className="dropdown">
+                                <button className="dropbtn"><a href="#">Appointments</a></button>
+                                <div className="dropdown-content">
+                                    <a href="/bookapp">Book </a>
+                                    <a href="/appsch">Scheduled</a>
+                                </div>
+                            </div>
 
-                        <div className="media_button">
-                            <button className="main_media_button" id="mediaButton">
-                                <span />
-                                <span />
-                                <span />
-                            </button>
-                        </div>
+                            <li class="box"><a href="/pprofile">Profile</a></li>
+                            {/* <li><button className="logout-button"><a href="#">Logout</a></button></li> */}
+                            <li><button className="logout-button"><a onClick={this.props.onLogout}>Logout</a></button></li>
+                        </ul>
+                        <div style={{ clear: 'both' }} />
+                    </div>
 
-                    </nav>
+                    <div className="media_button">
+                        <button className="main_media_button" id="mediaButton">
+                            <span />
+                            <span />
+                            <span />
+                        </button>
+                    </div>
+
+                </nav>
       
                     
                     <div className="prof-container">
